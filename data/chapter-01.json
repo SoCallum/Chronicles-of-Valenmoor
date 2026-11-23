@@ -1,0 +1,451 @@
+[
+  {
+    "id": "ch1_n1",
+    "chapterId": "chapter-01",
+    "stage": "opening",
+    "title": "The Silverwood Threshold",
+    "summary": "Blackened briars creep across the lantern road beneath the Whispering Canopy.",
+    "entry": {
+      "location": "Whispering Canopy · Lantern Arch",
+      "time": "Golden Dusk",
+      "mood": ["high-fantasy", "mystery"]
+    },
+    "tags": ["opening", "investigation"],
+    "art": {
+      "sceneKey": "silverwood_gate",
+      "caption": "Ancient silver birches arch over a runed waystone bleeding pale emerald mist.",
+      "relicCard": {
+        "riddleId": "riddle_silver_bark",
+        "artKey": "relic_bark_seal",
+        "caption": "Carved Dryad Bark-Seal — click to flip & decipher"
+      }
+    },
+    "text": [
+      "Silver leaves fall like frost-bitten coins along the border path. Where Oakhaven's timber-wards once held the wildwood back, tar-black thorns now coil around the waystone, drinking its emerald glow.",
+      "Sylvi, a bruised canopy scout, leans against a lantern post. \"The Elder Heart-Tree stopped singing at moonrise,\" she murmurs. \"Vaelen the Dryad Sentinel turned his roots on our patrols—and something colder watches from the hollow.\"",
+      "Two routes wind beneath the boughs: the moss-buried Pilgrim's Way, or the overgrown Briar Ravine where fresh tracks glint with black sap."
+    ],
+    "onEnter": {
+      "flagsAdd": ["Entered Silverwood"]
+    },
+    "choices": [
+      {
+        "id": "ch1_n1_study_stone",
+        "label": "Decode the waystone runes to trace the blight's arcane source.",
+        "stance": "arcane",
+        "relicBypass": {
+          "itemId": "relic_moonstone_lens",
+          "bonusText": "Moonstone Prism Lens reveals the cipher automatically (+100 Mastery)"
+        },
+        "check": {
+          "stat": "arcana",
+          "dc": 12,
+          "advantageClasses": ["scholar"],
+          "successNext": "ch1_n2",
+          "failNext": "ch1_n3",
+          "failEffects": { "dreadDelta": 1 }
+        },
+        "effects": {
+          "loreAdd": ["lore_waystone_cipher"],
+          "flagsAdd": ["Waystone Decoded"],
+          "goldDelta": 15
+        }
+      },
+      {
+        "id": "ch1_n1_track_ravine",
+        "label": "Follow the blackened sap prints quietly into the Briar Ravine.",
+        "stance": "cunning",
+        "check": {
+          "stat": "agility",
+          "dc": 11,
+          "advantageClasses": ["shadowblade", "warden"],
+          "successNext": "ch1_n3",
+          "failNext": "ch1_n4",
+          "failEffects": { "hpDelta": -3 }
+        },
+        "effects": {
+          "loreAdd": ["lore_corrupted_sap"],
+          "flagsAdd": ["Tracked Blight Trail"]
+        }
+      },
+      {
+        "id": "ch1_n1_quip_scout",
+        "label": "\"If trees start holding grudges, I'm charging the guild hazard pay.\" Press Sylvi for old fey shortcuts.",
+        "stance": "witty",
+        "next": "ch1_n2",
+        "effects": {
+          "flagsAdd": ["Sylvi's Shortcut"],
+          "goldDelta": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "ch1_n2",
+    "chapterId": "chapter-01",
+    "stage": "investigation",
+    "title": "Shrine of the Three Winds",
+    "summary": "A forgotten silver shrine hums above a brook choked with dark thorns.",
+    "entry": {
+      "location": "Whispering Canopy · Wind-Bell Clearing",
+      "time": "Twilight",
+      "mood": ["mystical", "investigation"]
+    },
+    "tags": ["investigation", "shrine"],
+    "art": {
+      "sceneKey": "silverwood_shrine",
+      "caption": "Weathered alabaster arches frame a silent belfry wrapped in luminous moss.",
+      "relicCard": {
+        "riddleId": "riddle_hollow_chime",
+        "artKey": "relic_bell_card",
+        "caption": "Inscribed Silver Belfry — click to flip & test the fey riddle"
+      }
+    },
+    "text": [
+      "High above the brambles stands a pre-Concord shrine where three hanging bells once kept the canopy's peace. Two have been shattered by cold-iron wedges stamped with a jagged crown sigil.",
+      "Whoever poisoned the Heart-Tree did not stumble here by chance—they hammered Veil-iron straight into the ley-roots to turn Vaelen mad.",
+      "Before you can extract a sample, a low snarl rises from the brook as a Blighted Thorn-Stalker uncoils from the mist."
+    ],
+    "choices": [
+      {
+        "id": "ch1_n2_fight_stalker",
+        "label": "Stand your ground and cut down the Blighted Thorn-Stalker.",
+        "stance": "heroic",
+        "combat": {
+          "enemyId": "thorn_stalker",
+          "victoryNext": "ch1_n5",
+          "fleeNext": "ch1_n4"
+        },
+        "effects": {
+          "loreAdd": ["lore_blight_architect"],
+          "flagsAdd": ["Shrine Cleared"]
+        }
+      },
+      {
+        "id": "ch1_n2_slip_past",
+        "label": "Mask your scent in silver moss and slip around the beast toward the Root Vault.",
+        "stance": "cunning",
+        "check": {
+          "stat": "agility",
+          "dc": 13,
+          "advantageClasses": ["shadowblade", "warden"],
+          "successNext": "ch1_n5",
+          "failNext": "ch1_n4",
+          "failEffects": { "dreadDelta": 1 }
+        },
+        "effects": {
+          "loreAdd": ["lore_blight_architect"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ch1_n3",
+    "chapterId": "chapter-01",
+    "stage": "investigation",
+    "title": "The Sap-Stained Ravine",
+    "summary": "A ruined smuggler's camp holds Veil-iron spikes and a scorched ledger.",
+    "entry": {
+      "location": "Whispering Canopy · Briar Ravine",
+      "time": "Deep Dusk",
+      "mood": ["tense", "investigation"]
+    },
+    "tags": ["investigation", "discovery"],
+    "art": {
+      "sceneKey": "silverwood_gate",
+      "caption": "Snapped iron wedges and vials of pitch-dark sap litter a mossy gully.",
+      "relicCard": {
+        "riddleId": "riddle_hollow_chime",
+        "artKey": "relic_bell_card",
+        "caption": "Abandoned Fey Satchel — click to flip & solve the chime cipher"
+      }
+    },
+    "text": [
+      "Tucked beneath a fallen birch lies an abandoned camp bearing the mark of the Hollow Crown—cultists who serve the encroaching Aether Veil. Their crates hold cold-iron spikes forged specifically to siphon a heart-tree's life.",
+      "A half-burned order reads: 'Once Silverwood falls, Lake Vesper's mirror will crack next.'",
+      "Heavy footsteps crunch along the ridge above—a Blighted Thorn-Stalker has caught your scent."
+    ],
+    "choices": [
+      {
+        "id": "ch1_n3_ambush",
+        "label": "Ambush the Thorn-Stalker before it alerts the grove!",
+        "stance": "heroic",
+        "combat": {
+          "enemyId": "thorn_stalker",
+          "victoryNext": "ch1_n5",
+          "fleeNext": "ch1_n4"
+        },
+        "effects": {
+          "loreAdd": ["lore_blight_architect", "lore_corrupted_sap"],
+          "goldDelta": 20
+        }
+      },
+      {
+        "id": "ch1_n3_seal_crates",
+        "label": "Purge the Veil-iron crates with an arcane ward and hurry to the Heart-Tree.",
+        "stance": "arcane",
+        "check": {
+          "stat": "arcana",
+          "dc": 13,
+          "advantageClasses": ["scholar", "paladin"],
+          "successNext": "ch1_n5",
+          "failNext": "ch1_n4",
+          "failEffects": { "dreadDelta": 1, "hpDelta": -2 }
+        },
+        "effects": {
+          "loreAdd": ["lore_blight_architect"],
+          "flagsAdd": ["Veil Spikes Purged"],
+          "dreadDelta": -1
+        }
+      }
+    ]
+  },
+  {
+    "id": "ch1_n4",
+    "chapterId": "chapter-01",
+    "stage": "confrontation",
+    "title": "The Choking Thicket",
+    "summary": "Living thorns close the forest trails, forcing a brutal climb to the Elder Glade.",
+    "entry": {
+      "location": "Whispering Canopy · Thorn Labyrinth",
+      "time": "Moonrise",
+      "mood": ["perilous", "veil"]
+    },
+    "tags": ["hazard", "confrontation"],
+    "art": {
+      "sceneKey": "silverwood_heart",
+      "caption": "Luminous roots pulse crimson and emerald behind a wall of snapping thorns."
+    },
+    "text": [
+      "The forest closes behind you like the ribs of a sleeping giant. Razor-edged vines whip across the path as Veil mist pools around your boots.",
+      "Ahead, the immense trunk of the Elder Heart-Tree towers against the moon, its crown flickering between pale silver and diseased violet-black.",
+      "You can hack straight through the briar wall or rally your voice to call out to the trapped spirit within."
+    ],
+    "choices": [
+      {
+        "id": "ch1_n4_hew",
+        "label": "Hew through the briar barricade with raw strength.",
+        "stance": "heroic",
+        "check": {
+          "stat": "might",
+          "dc": 12,
+          "advantageClasses": ["paladin"],
+          "successNext": "ch1_n5",
+          "failNext": "ch1_n6",
+          "failEffects": { "hpDelta": -4, "dreadDelta": 1 }
+        },
+        "effects": {
+          "flagsAdd": ["Broke the Briar Wall"]
+        }
+      },
+      {
+        "id": "ch1_n4_soothe",
+        "label": "Speak the old Oakhaven pact-words to calm the restless roots.",
+        "stance": "witty",
+        "check": {
+          "stat": "presence",
+          "dc": 12,
+          "advantageClasses": ["warden"],
+          "successNext": "ch1_n5",
+          "failNext": "ch1_n6",
+          "failEffects": { "dreadDelta": 1 }
+        },
+        "effects": {
+          "loreAdd": ["lore_dryad_pact"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ch1_n5",
+    "chapterId": "chapter-01",
+    "stage": "confrontation",
+    "title": "The Elder Heart-Tree",
+    "summary": "Vaelen the Hollow-Bough rises from the poisoned roots, crowned in cold-iron spikes.",
+    "entry": {
+      "location": "Whispering Canopy · Elder Glade",
+      "time": "Silver Midnight",
+      "mood": ["climax", "high-fantasy"]
+    },
+    "tags": ["confrontation", "boss"],
+    "art": {
+      "sceneKey": "silverwood_heart",
+      "caption": "A towering sentinel of silver bark and bleeding thorns guards the fractured Heart-Tree."
+    },
+    "text": [
+      "In the center of the glade stands the Elder Heart-Tree—wide as a keep, its glowing amber heart pierced by a jagged Veil-iron spike. Out of its roots steps Vaelen the Hollow-Bough, once the forest's gentle guardian, now armored in weeping black thorns.",
+      "\"Mortal steel brought the spike!\" Vaelen's voice cracks like splitting oak. \"None leave the Canopy while the root bleeds!\"",
+      "If you hold the Heartwood Chime or the Moonstone Lens, you spot the exact harmonic fracture pinning the curse to Vaelen's chest."
+    ],
+    "choices": [
+      {
+        "id": "ch1_n5_chime_ritual",
+        "label": "Ring the Heartwood Chime to shatter Vaelen's curse and purify the Heart-Tree!",
+        "stance": "arcane",
+        "relicBypass": {
+          "itemId": "relic_silver_bell",
+          "bonusText": "Heartwood Chime triggers the Golden Path Purification (+100 Mastery)!"
+        },
+        "check": {
+          "stat": "presence",
+          "dc": 16,
+          "advantageClasses": ["warden", "paladin"],
+          "successNext": "ch1_end_legendary",
+          "failNext": "ch1_n6",
+          "failEffects": { "dreadDelta": 1 }
+        },
+        "effects": {
+          "flagsAdd": ["Purified Vaelen"],
+          "loreAdd": ["lore_dryad_pact"]
+        }
+      },
+      {
+        "id": "ch1_n5_duel_vaelen",
+        "label": "Engage Vaelen the Hollow-Bough in battle to wrench the Veil-iron spike free!",
+        "stance": "heroic",
+        "combat": {
+          "enemyId": "hollow_warden",
+          "victoryNext": "ch1_end_triumph",
+          "fleeNext": "ch1_end_bittersweet"
+        },
+        "effects": {
+          "flagsAdd": ["Vanquished Hollow-Bough"]
+        }
+      },
+      {
+        "id": "ch1_n5_parley_witty",
+        "label": "\"I didn't hammer iron into your ribs, Vaelen—the Hollow Crown did. Let me pull it out before we trade blows.\"",
+        "stance": "witty",
+        "relicBypass": {
+          "itemId": "relic_moonstone_lens",
+          "bonusText": "Moonstone Prism Lens exposes the Veil-iron sigil to Vaelen (+100 Mastery)"
+        },
+        "check": {
+          "stat": "presence",
+          "dc": 14,
+          "advantageClasses": ["warden", "scholar"],
+          "successNext": "ch1_end_legendary",
+          "failNext": "ch1_n6",
+          "failEffects": { "dreadDelta": 1 }
+        },
+        "effects": {
+          "flagsAdd": ["Spared Vaelen"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ch1_n6",
+    "chapterId": "chapter-01",
+    "stage": "confrontation",
+    "title": "Roots of Wrath",
+    "summary": "Vaelen lunges in blind agony; only steel or desperate escape remains.",
+    "entry": {
+      "location": "Whispering Canopy · Shattered Glade",
+      "time": "Silver Midnight",
+      "mood": ["combat", "urgent"]
+    },
+    "tags": ["confrontation", "boss"],
+    "art": {
+      "sceneKey": "silverwood_heart",
+      "caption": "Thorn spears erupt from the moss as the corrupted Dryad Sentinel charges."
+    },
+    "text": [
+      "The Veil-iron spike flares violet-crimson, drowning out reason. Vaelen raises a sweeping bough wreathed in blackened sap and strikes the earth, splitting the glade in two.",
+      "There is no more time for quiet bargains—face the guardian or retreat to warn Oakhaven before the blight reaches the gates."
+    ],
+    "choices": [
+      {
+        "id": "ch1_n6_fight",
+        "label": "Meet Vaelen blade-to-bough and sever the corruption!",
+        "stance": "heroic",
+        "combat": {
+          "enemyId": "hollow_warden",
+          "victoryNext": "ch1_end_triumph",
+          "fleeNext": "ch1_end_bittersweet"
+        }
+      },
+      {
+        "id": "ch1_n6_retreat",
+        "label": "Torch the creeping border vines to buy Oakhaven time and fall back.",
+        "stance": "cunning",
+        "next": "ch1_end_bittersweet",
+        "effects": {
+          "dreadDelta": 1,
+          "flagsAdd": ["Scorched Borderline"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ch1_end_legendary",
+    "chapterId": "chapter-01",
+    "stage": "ending",
+    "title": "The Heart-Tree Blooms Anew",
+    "summary": "Vaelen is freed without bloodshed and swears the Canopy's oath to Oakhaven.",
+    "tags": ["ending", "legendary"],
+    "art": {
+      "sceneKey": "silverwood_shrine",
+      "caption": "Luminous silver blossoms drift across the moonlit glade as the ley-roots heal."
+    },
+    "text": [
+      "As the cold-iron spike slides free and shatters into harmless dust, a rush of warm emerald starlight sweeps outward from the Elder Heart-Tree. Black thorns wither into silver moss.",
+      "Vaelen kneels upon the restored loam and presses a glowing amber leaf-charm into your palm. \"The Canopy remembers mercy, Wayfarer. When you climb toward the Star-Spires, the wind will carry your name.\"",
+      "You return to Oakhaven beneath a gentle rain of silver petals—and carrying proof that the Hollow Crown has moved on to Lake Vesper."
+    ],
+    "choices": [],
+    "ending": {
+      "type": "legendary",
+      "headline": "Savior of the Whispering Canopy",
+      "epilogue": "Silver blossoms blanket Oakhaven's timber eaves as Vaelen renews the ancient peace between bastion and wood.",
+      "rewardGold": 85,
+      "rewardItem": "gear_silverleaf_charm"
+    }
+  },
+  {
+    "id": "ch1_end_triumph",
+    "chapterId": "chapter-01",
+    "stage": "ending",
+    "title": "The Blight Severed",
+    "summary": "Vaelen falls, the Veil-iron spike is destroyed, and Silverwood begins its slow recovery.",
+    "tags": ["ending", "triumph"],
+    "art": {
+      "sceneKey": "silverwood_gate",
+      "caption": "Morning light breaks through the clearing canopy as emerald shoots sprout from charred thorns."
+    },
+    "text": [
+      "Your final blow cracks the cold-iron spike lodged in Vaelen's chest. The corrupted sentinel exhales a sigh like winter wind and dissolves into a ring of silver saplings around the Heart-Tree.",
+      "The blight halts at the edge of Oakhaven's fields. Though the forest mourns its fallen keeper, your blade saved hundreds of townsfolk—and revealed the Hollow Crown's trail toward Lake Vesper."
+    ],
+    "choices": [],
+    "ending": {
+      "type": "triumph",
+      "headline": "Breaker of the Silverwood Blight",
+      "epilogue": "New emerald shoots rise around the Elder Glade while Oakhaven's bells ring in gratitude for your steel.",
+      "rewardGold": 65
+    }
+  },
+  {
+    "id": "ch1_end_bittersweet",
+    "chapterId": "chapter-01",
+    "stage": "ending",
+    "title": "Ash Along the Boughs",
+    "summary": "You hold the blight back from Oakhaven's walls, though the deep wood remains shadowed.",
+    "tags": ["ending", "bittersweet"],
+    "art": {
+      "sceneKey": "silverwood_gate",
+      "caption": "Smoke curls along the western timberline as dawn rises over a wary bastion."
+    },
+    "text": [
+      "Your firebreak halts the creeping thorns a bowshot from Oakhaven's stone walls. The town is safe for another season, yet deep within the Whispering Canopy the Elder Heart-Tree still groans under Veil-iron.",
+      "Archivist Seraphina reads the intelligence you salvaged with grave eyes. \"We bought time—now we must strike the Hollow Crown before Lake Vesper falls.\""
+    ],
+    "choices": [],
+    "ending": {
+      "type": "bittersweet",
+      "headline": "Warden of the Western Wall",
+      "epilogue": "Oakhaven stands unbroken behind charred watch-lines, though watchful eyes still glimmer in the western trees.",
+      "rewardGold": 40
+    }
+  }
+]

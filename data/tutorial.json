@@ -1,0 +1,93 @@
+[
+  {
+    "id": "tut_n1",
+    "chapterId": "tutorial",
+    "stage": "opening",
+    "title": "The Gatehouse of Oakhaven",
+    "summary": "Archivist Seraphina tests your readiness beneath the torchlit arch.",
+    "entry": {
+      "location": "Oakhaven Bastion · South Gatehouse",
+      "time": "Lantern Dusk",
+      "mood": ["prologue", "training"]
+    },
+    "tags": ["opening", "tutorial"],
+    "art": {
+      "sceneKey": "oakhaven_bastion",
+      "caption": "Torchlit stone spans the Silverwash gorge while distant Star-Spires glow above the mist.",
+      "relicCard": {
+        "riddleId": "riddle_gate_seal",
+        "artKey": "relic_seal_card",
+        "caption": "Illuminated Gatehouse Arch — click to flip & solve your first Relic Riddle!"
+      }
+    },
+    "text": [
+      "Warm cedar smoke drifts from Oakhaven's great hearth as Archivist Seraphina taps a gilded charter against the stone balustrade.",
+      "\"Before you step into the Sundered Reach,\" she says, pointing to the glowing arch behind her, \"inspect the illuminated relic card above—flipped runes often yield Satchel Relics that open Golden Paths.\"",
+      "Beyond the archway, a brass sparring automaton whirs to life on the cobbles, waiting for your first choice."
+    ],
+    "choices": [
+      {
+        "id": "tut_n1_seal",
+        "label": "Present the Guild Wayfarer's Seal to bypass the sparring gate gracefully.",
+        "stance": "witty",
+        "relicBypass": {
+          "itemId": "relic_wayfarer_seal",
+          "bonusText": "Uses Wayfarer's Seal for a Golden Path (+100 Mastery)"
+        },
+        "check": {
+          "stat": "presence",
+          "dc": 11,
+          "advantageClasses": ["paladin", "warden"],
+          "successNext": "tut_n2",
+          "failNext": "tut_n2",
+          "failEffects": { "dreadDelta": 0 }
+        },
+        "effects": {
+          "flagsAdd": ["Saluted the Gate"],
+          "goldDelta": 15
+        }
+      },
+      {
+        "id": "tut_n1_spar",
+        "label": "Step into the ring and test your mettle against the Clockwork Sparring Knight.",
+        "stance": "heroic",
+        "combat": {
+          "enemyId": "training_construct",
+          "victoryNext": "tut_n2",
+          "fleeNext": "tut_n2"
+        },
+        "effects": {
+          "flagsAdd": ["Tested in Steel"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "tut_n2",
+    "chapterId": "tutorial",
+    "stage": "climax",
+    "title": "The Horizon of Star-Spires",
+    "summary": "Seraphina marks the four fractured reaches upon your campaign parchment.",
+    "entry": {
+      "location": "Oakhaven Bastion · Watchtower Overlook",
+      "time": "First Starlight",
+      "mood": ["prologue", "oath"]
+    },
+    "tags": ["ending", "tutorial"],
+    "art": {
+      "sceneKey": "silverwood_gate",
+      "caption": "Westward lies the Whispering Canopy, where silver leaves tremble beneath encroaching Veil mist."
+    },
+    "text": [
+      "\"Well handled,\" Seraphina nods, rolling a ribbon of gold wax across your Wayfarer's Charter. \"Remember three laws of the Reach: watch enemy intents in battle, keep Veil Dread below six, and never leave a glowing rune unread.\"",
+      "Far across the valley, a silver flare rises from the Whispering Canopy—the first call for aid. Your chronicle begins."
+    ],
+    "choices": [],
+    "ending": {
+      "type": "triumph",
+      "headline": "Sworn to the Wayfarer's Guild",
+      "epilogue": "Your charter bears the wax seal of Oakhaven. The roads of Valenmoor lie open before you.",
+      "rewardGold": 25
+    }
+  }
+]

@@ -1,0 +1,444 @@
+[
+  {
+    "id": "ch4_n1",
+    "chapterId": "chapter-04",
+    "stage": "opening",
+    "title": "The Sky-Bridge of Alabaster",
+    "summary": "Above the cloud-sea, the fractured Crown of Glass hangs at the threshold of the Aether Veil.",
+    "entry": {
+      "location": "Crown of Glass · Ascension Causeway",
+      "time": "Beyond Dusk",
+      "mood": ["grand", "high-fantasy"]
+    },
+    "tags": ["opening", "finale"],
+    "art": {
+      "sceneKey": "glass_crown",
+      "caption": "Floating bridges of fractured alabaster arch toward a radiant prism citadel hovering before a starry rift.",
+      "relicCard": {
+        "riddleId": "riddle_prism_spire",
+        "artKey": "relic_prism_card",
+        "caption": "Alabaster Prism Pedestal — click to flip & align the light"
+      }
+    },
+    "text": [
+      "Thin mountain wind whips past your cloak as you step onto the floating alabaster bridge. Far below, Oakhaven Bastion glows like a single hearth-ember tucked between Silverwood and Lake Vesper.",
+      "Before you hovers the Crown of Glass—the highest Star-Spire of the First Concord, split along seven glowing faultlines. Beyond its shattered crown ripples the Aether Veil itself, humming like a struck harp string.",
+      "Two passages ascend toward the Sovereign Loom: the Hall of Echoed Oaths, or the Shattered Terrace patrolled by a Prism-Shattered Knight."
+    ],
+    "onEnter": {
+      "flagsAdd": ["Ascended the Crown of Glass"]
+    },
+    "choices": [
+      {
+        "id": "ch4_n1_read_faultlines",
+        "label": "Map the seven glowing faultlines to find the safest harmonic path into the Spire.",
+        "stance": "arcane",
+        "relicBypass": {
+          "itemId": "relic_concord_prism",
+          "bonusText": "First Concord Prism focuses the seven faultlines (+100 Mastery)"
+        },
+        "check": {
+          "stat": "arcana",
+          "dc": 14,
+          "advantageClasses": ["scholar"],
+          "successNext": "ch4_n2",
+          "failNext": "ch4_n3",
+          "failEffects": { "dreadDelta": 1 }
+        },
+        "effects": {
+          "loreAdd": ["lore_spire_fracture"],
+          "flagsAdd": ["Mapped Spire Faultlines"],
+          "goldDelta": 30
+        }
+      },
+      {
+        "id": "ch4_n1_terrace",
+        "label": "Vault across the drifting glass shards of the outer terrace.",
+        "stance": "cunning",
+        "check": {
+          "stat": "agility",
+          "dc": 14,
+          "advantageClasses": ["shadowblade"],
+          "successNext": "ch4_n3",
+          "failNext": "ch4_n4",
+          "failEffects": { "hpDelta": -4 }
+        },
+        "effects": {
+          "flagsAdd": ["Crossed Shattered Terrace"]
+        }
+      },
+      {
+        "id": "ch4_n1_quip_veil",
+        "label": "\"Floating stairs, no railings, cosmic rift next door—the First Concord really hated safety inspectors.\"",
+        "stance": "witty",
+        "next": "ch4_n2",
+        "effects": {
+          "flagsAdd": ["Undaunted by the Veil"],
+          "dreadDelta": -1
+        }
+      }
+    ]
+  },
+  {
+    "id": "ch4_n2",
+    "chapterId": "chapter-04",
+    "stage": "investigation",
+    "title": "The Hall of Echoed Oaths",
+    "summary": "Golden glass tapestries preserve the final words of the First Concord's last sentinel.",
+    "entry": {
+      "location": "Crown of Glass · Hall of Oaths",
+      "time": "Starlight",
+      "mood": ["solemn", "lore"]
+    },
+    "tags": ["investigation", "lore"],
+    "art": {
+      "sceneKey": "glass_crown",
+      "caption": "Translucent marble statues hold unlit lanterns beneath a ceiling of woven starlight.",
+      "relicCard": {
+        "riddleId": "riddle_sentinel_flame",
+        "artKey": "relic_lantern_card",
+        "caption": "Statue of the Last Sentinel — click to flip & kindle the Oath-Lantern"
+      }
+    },
+    "text": [
+      "Every step across the translucent floor awakens soft golden echoes—memories of the First Concord's final night. You learn the truth hidden from history: the Veil was never an invading army, but the grief of a broken world-weave left untended when the Concord shattered.",
+      "At the archway ahead stands a Prism-Shattered Knight, a crystalline echo sworn to test every mortal who approaches the Sovereign Loom."
+    ],
+    "choices": [
+      {
+        "id": "ch4_n2_duel_knight",
+        "label": "Cross blades with the Prism-Shattered Knight to prove your right of passage!",
+        "stance": "heroic",
+        "combat": {
+          "enemyId": "veil_knight",
+          "victoryNext": "ch4_n5",
+          "fleeNext": "ch4_n4"
+        },
+        "effects": {
+          "loreAdd": ["lore_loom_weave"],
+          "flagsAdd": ["Proved Worth in Steel"]
+        }
+      },
+      {
+        "id": "ch4_n2_oath_lantern",
+        "label": "Raise the Unfading Oath-Lantern and recite the Wayfarer's Vow to pass in peace.",
+        "stance": "heroic",
+        "relicBypass": {
+          "itemId": "relic_oath_lantern",
+          "bonusText": "Unfading Oath-Lantern wins the Sentinel's salute (+100 Mastery)!"
+        },
+        "check": {
+          "stat": "presence",
+          "dc": 15,
+          "advantageClasses": ["paladin", "warden"],
+          "successNext": "ch4_n5",
+          "failNext": "ch4_n4",
+          "failEffects": { "dreadDelta": 1 }
+        },
+        "effects": {
+          "loreAdd": ["lore_loom_weave", "lore_first_concord"],
+          "flagsAdd": ["Saluted by the Concord"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ch4_n3",
+    "chapterId": "chapter-04",
+    "stage": "investigation",
+    "title": "The Prism Gallery",
+    "summary": "Seven refracted mirrors show alternate fates of Valenmoor—and reveal the Regent's weakness.",
+    "entry": {
+      "location": "Crown of Glass · Prism Gallery",
+      "time": "Starlight",
+      "mood": ["arcane", "tension"]
+    },
+    "tags": ["investigation", "discovery"],
+    "art": {
+      "sceneKey": "glass_loom",
+      "caption": "Mirrored crystal pillars bend beams of amber and emerald light into an ancient tapestry.",
+      "relicCard": {
+        "riddleId": "riddle_sentinel_flame",
+        "artKey": "relic_lantern_card",
+        "caption": "Mirror Brazier — click to flip & kindle the Oath-Lantern"
+      }
+    },
+    "text": [
+      "Inside the Prism Gallery, shards of floating glass replay glimpses of Oakhaven, Silverwood, Lake Vesper, and Ashenspire. Every ley-thread converges upward into the Sovereign Loom—where the Unwoven Regent waits to unravel the last anchor.",
+      "A Prism-Shattered Knight steps cleanly out of the central mirror, crystal greatsword raised!"
+    ],
+    "choices": [
+      {
+        "id": "ch4_n3_fight",
+        "label": "Shatter the Prism-Shattered Knight in combat!",
+        "stance": "heroic",
+        "combat": {
+          "enemyId": "veil_knight",
+          "victoryNext": "ch4_n5",
+          "fleeNext": "ch4_n4"
+        },
+        "effects": {
+          "loreAdd": ["lore_loom_weave", "lore_spire_fracture"],
+          "goldDelta": 35
+        }
+      },
+      {
+        "id": "ch4_n3_refract",
+        "label": "Shift the central mirror angle to trap the Knight in an endless reflection.",
+        "stance": "arcane",
+        "check": {
+          "stat": "arcana",
+          "dc": 15,
+          "advantageClasses": ["scholar", "shadowblade"],
+          "successNext": "ch4_n5",
+          "failNext": "ch4_n4",
+          "failEffects": { "hpDelta": -4, "dreadDelta": 1 }
+        },
+        "effects": {
+          "loreAdd": ["lore_loom_weave"],
+          "flagsAdd": ["Outwitted the Mirror Guard"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ch4_n4",
+    "chapterId": "chapter-04",
+    "stage": "confrontation",
+    "title": "The Tempest of Unmaking",
+    "summary": "Shards of alabaster whirl through the Veil gale just below the Sovereign Loom.",
+    "entry": {
+      "location": "Crown of Glass · Broken Stair",
+      "time": "Threshold",
+      "mood": ["urgent", "epic"]
+    },
+    "tags": ["hazard", "confrontation"],
+    "art": {
+      "sceneKey": "glass_loom",
+      "caption": "Gilded debris spirals upward around a towering loom of living starlight."
+    },
+    "text": [
+      "Gravity loosens as the Aether Veil breathes across the broken stair. Shards of alabaster spin like snow around the final doorway to the Sovereign Loom.",
+      "Steel your heart for the final ascent—Valenmoor's fate rests one threshold away."
+    ],
+    "choices": [
+      {
+        "id": "ch4_n4_push",
+        "label": "Plant your boots and force your way up the wind-torn steps.",
+        "stance": "heroic",
+        "check": {
+          "stat": "might",
+          "dc": 14,
+          "advantageClasses": ["paladin"],
+          "successNext": "ch4_n5",
+          "failNext": "ch4_n6",
+          "failEffects": { "hpDelta": -5, "dreadDelta": 1 }
+        }
+      },
+      {
+        "id": "ch4_n4_anchor",
+        "label": "Weave an anchor-step using the pulsing ley-lines underfoot.",
+        "stance": "arcane",
+        "check": {
+          "stat": "arcana",
+          "dc": 14,
+          "advantageClasses": ["scholar", "warden"],
+          "successNext": "ch4_n5",
+          "failNext": "ch4_n6",
+          "failEffects": { "dreadDelta": 1 }
+        }
+      }
+    ]
+  },
+  {
+    "id": "ch4_n5",
+    "chapterId": "chapter-04",
+    "stage": "confrontation",
+    "title": "The Sovereign Loom",
+    "summary": "The Unwoven Regent stands before the golden loom of Valenmoor, threads of starlight fraying in its grasp.",
+    "entry": {
+      "location": "Crown of Glass · Sovereign Loom",
+      "time": "The Turning of the Age",
+      "mood": ["finale", "epic"]
+    },
+    "tags": ["confrontation", "boss", "finale"],
+    "art": {
+      "sceneKey": "glass_loom",
+      "caption": "A towering crowned silhouette of star-glass and shadow hovers before a colossal golden loom."
+    },
+    "text": [
+      "At the apex of the Crown of Glass stands the Sovereign Loom—an immense harp of golden ley-threads spanning the open sky. Before it hovers the Unwoven Regent, draped in fractured light and carrying the hollow crown of the old kingdom.",
+      "\"Look upon the threads, Wayfarer,\" the Regent speaks with a chorus of ancient voices. \"Every empire frays. Let the Veil unmake Valenmoor cleanly—or try to weave an age you cannot hold.\"",
+      "Behind the Regent, the central prism socket pulses empty. You can re-weave the Concord with the Prism, challenge the Regent in final battle, or make a bold wager for the Loom itself."
+    ],
+    "choices": [
+      {
+        "id": "ch4_n5_reweave_concord",
+        "label": "Seat the First Concord Prism into the Sovereign Loom and re-weave Valenmoor's dawn!",
+        "stance": "arcane",
+        "relicBypass": {
+          "itemId": "relic_concord_prism",
+          "bonusText": "First Concord Prism completes the Mythic Re-Weaving (+100 Mastery)!"
+        },
+        "check": {
+          "stat": "arcana",
+          "dc": 17,
+          "advantageClasses": ["scholar", "warden"],
+          "successNext": "ch4_end_legendary",
+          "failNext": "ch4_n6",
+          "failEffects": { "dreadDelta": 1 }
+        },
+        "effects": {
+          "flagsAdd": ["Rewove the Sovereign Loom"],
+          "loreAdd": ["lore_first_concord"]
+        }
+      },
+      {
+        "id": "ch4_n5_duel_regent",
+        "label": "Draw steel and vanquish the Unwoven Regent to reclaim the Sovereign Loom!",
+        "stance": "heroic",
+        "combat": {
+          "enemyId": "veil_sovereign",
+          "victoryNext": "ch4_end_triumph",
+          "fleeNext": "ch4_end_bittersweet"
+        },
+        "effects": {
+          "flagsAdd": ["Vanquished the Unwoven Regent"]
+        }
+      },
+      {
+        "id": "ch4_n5_oath_wager",
+        "label": "\"Valenmoor doesn't need a hollow king—it has folk who keep their oaths!\" Lift the Oath-Lantern to bind the Veil.",
+        "stance": "witty",
+        "relicBypass": {
+          "itemId": "relic_oath_lantern",
+          "bonusText": "Unfading Oath-Lantern silences the Regent's doubt for a Mythic Finale (+100 Mastery)!"
+        },
+        "check": {
+          "stat": "presence",
+          "dc": 17,
+          "advantageClasses": ["paladin", "warden"],
+          "successNext": "ch4_end_legendary",
+          "failNext": "ch4_n6",
+          "failEffects": { "dreadDelta": 1 }
+        },
+        "effects": {
+          "flagsAdd": ["Bound the Veil by Oath"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ch4_n6",
+    "chapterId": "chapter-04",
+    "stage": "confrontation",
+    "title": "Edge of Unmaking",
+    "summary": "The Regent draws a blade of shattered starlight—this is the final stand for Valenmoor!",
+    "entry": {
+      "location": "Crown of Glass · Sovereign Loom",
+      "time": "Final Hour",
+      "mood": ["boss", "urgent"]
+    },
+    "tags": ["confrontation", "boss", "finale"],
+    "art": {
+      "sceneKey": "glass_loom",
+      "caption": "Golden threads whip across the open sky as the Unwoven Regent descends to strike."
+    },
+    "text": [
+      "The Loom's outer strings snap with thunderous chimes. The Unwoven Regent raises a blade of pure prism-fire, stepping down from the dais to end the age once and for all.",
+      "Defeat the Regent in final combat, or sever the anchor-cable to drop the Crown into the Veil and spare Oakhaven below."
+    ],
+    "choices": [
+      {
+        "id": "ch4_n6_final_duel",
+        "label": "Stand tall and defeat the Unwoven Regent!",
+        "stance": "heroic",
+        "combat": {
+          "enemyId": "veil_sovereign",
+          "victoryNext": "ch4_end_triumph",
+          "fleeNext": "ch4_end_bittersweet"
+        }
+      },
+      {
+        "id": "ch4_n6_sacrifice_spire",
+        "label": "Sever the master anchor-pin—cast the fractured Crown into the rift to seal the sky!",
+        "stance": "cunning",
+        "next": "ch4_end_bittersweet",
+        "effects": {
+          "flagsAdd": ["Sacrificed the Crown of Glass"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ch4_end_legendary",
+    "chapterId": "chapter-04",
+    "stage": "ending",
+    "title": "Dawn of the Second Concord",
+    "summary": "The Sovereign Loom sings anew, sealing the Aether Veil and ushering in a golden age for Valenmoor.",
+    "tags": ["ending", "legendary", "finale"],
+    "art": {
+      "sceneKey": "oakhaven_bastion",
+      "caption": "Golden dawn pours across Oakhaven Bastion as intact Star-Spires shine steadily overhead."
+    },
+    "text": [
+      "A single chime of pure alabaster resonance sweeps across the entire Sundered Reach. Every severed thread on the Sovereign Loom knits back together in liquid gold. The Unwoven Regent lowers its fractured crown, dissolving peacefully into warm morning starlight.",
+      "Far below, Silverwood's leaves shimmer emerald, Lake Vesper reflects a tranquil dawn, and Ashenspire's beacon burns steady and bright. The Aether Veil recedes beyond the horizon.",
+      "Your name is illuminated in gold leaf at the head of Oakhaven's Great Chronicle—founder of the Second Concord, Legend of Valenmoor."
+    ],
+    "choices": [],
+    "ending": {
+      "type": "legendary",
+      "headline": "Sovereign of the Second Concord",
+      "epilogue": "Star-Spires drift serene over a healed realm as bards across the High Kingdoms sing of the Wayfarer who mended the sky.",
+      "rewardGold": 200,
+      "rewardItem": "gear_starlight_vestments"
+    }
+  },
+  {
+    "id": "ch4_end_triumph",
+    "chapterId": "chapter-04",
+    "stage": "ending",
+    "title": "Shattered Crown, Saved Realm",
+    "summary": "The Unwoven Regent falls to your steel, locking the Aether Veil shut for a generation.",
+    "tags": ["ending", "triumph", "finale"],
+    "art": {
+      "sceneKey": "oakhaven_bastion",
+      "caption": "Torchlight and sunrise mingle over Oakhaven's cheering ramparts."
+    },
+    "text": [
+      "With a final decisive strike, the Unwoven Regent shatters into harmless motes of star-dust. The Sovereign Loom locks tightly into place, sealing the rift above the cloud-sea in a ring of steady amber wards.",
+      "Exhausted and scarred, you descend the fading sky-bridge back to Oakhaven Bastion, where Archivist Seraphina and Master Elric wait with raised tankards and an open page in the Hall of Legends."
+    ],
+    "choices": [],
+    "ending": {
+      "type": "triumph",
+      "headline": "Champion of the Shattered Spire",
+      "epilogue": "The Aether Veil retreats behind newly forged wards, and Oakhaven's bells ring through the morning mist in your honor.",
+      "rewardGold": 150
+    }
+  },
+  {
+    "id": "ch4_end_bittersweet",
+    "chapterId": "chapter-04",
+    "stage": "ending",
+    "title": "The Spire That Fell",
+    "summary": "You cast the Crown of Glass into the rift, collapsing the Veil gate at the cost of the ancient spire.",
+    "tags": ["ending", "bittersweet", "finale"],
+    "art": {
+      "sceneKey": "glass_crown",
+      "caption": "Silver dust trails across a quiet twilight sky where the highest spire once floated."
+    },
+    "text": [
+      "You wrench the anchor-pin free and leap onto the descending sky-skiff as the Crown of Glass folds inward, sealing the Aether Veil shut like a closing book. A silent meteor shower of alabaster dust rains harmlessly over the valley.",
+      "The age of floating spires has ended—yet Oakhaven lives, free to chart a mortal future without the shadow of the Veil."
+    ],
+    "choices": [],
+    "ending": {
+      "type": "bittersweet",
+      "headline": "Last Watcher of the Crown",
+      "epilogue": "Though the Crown of Glass fades into legend, Oakhaven endures beneath clear, unshadowed stars.",
+      "rewardGold": 100
+    }
+  }
+]

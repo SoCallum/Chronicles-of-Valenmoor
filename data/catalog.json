@@ -1,0 +1,727 @@
+{
+  "classes": [
+    {
+      "id": "paladin",
+      "name": "Paladin of the Dawn",
+      "shortTitle": "Dawn Paladin",
+      "portraitKey": "portrait_paladin",
+      "tagline": "Oathbound vanguard who breaks curses with solar steel.",
+      "perkName": "Aegis of Dawn",
+      "perkDescription": "+4 Max Vitality, +1 Base Armor, and Heroic choices bolster resolve.",
+      "primaryStat": "might",
+      "baseHp": 28,
+      "baseFocus": 6,
+      "baseArmor": 13,
+      "recommendedStats": { "might": 15, "arcana": 10, "agility": 11, "presence": 14 },
+      "startingGear": {
+        "weapon": "gear_sunsteel_blade",
+        "armor": "gear_bastion_brigandine",
+        "talisman": null
+      },
+      "startingItems": ["consumable_starleaf_draught"],
+      "skill": {
+        "id": "sunfire_smite",
+        "name": "Sunfire Smite",
+        "cost": 2,
+        "description": "Deal radiant weapon damage (+5 bonus) and cleanse 1 Veil Dread on a killing blow or critical hit.",
+        "bonusDamage": 5,
+        "cleanseDreadOnCritOrKill": true,
+        "pierceArmor": false,
+        "stun": false,
+        "evade": false
+      }
+    },
+    {
+      "id": "scholar",
+      "name": "Arcane Scholar",
+      "shortTitle": "Astromancer",
+      "portraitKey": "portrait_scholar",
+      "tagline": "Seeker of elder runes who unravels curses before blades are drawn.",
+      "perkName": "Sight Unbound",
+      "perkDescription": "Advantage on Arcana checks, +3 Max Focus, and automatically crosses out 1 false answer on Relic Riddles.",
+      "primaryStat": "arcana",
+      "baseHp": 22,
+      "baseFocus": 9,
+      "baseArmor": 11,
+      "recommendedStats": { "might": 10, "arcana": 16, "agility": 12, "presence": 12 },
+      "startingGear": {
+        "weapon": "gear_starwood_staff",
+        "armor": "gear_archive_mantle",
+        "talisman": null
+      },
+      "startingItems": ["consumable_starleaf_draught", "consumable_aether_phial"],
+      "skill": {
+        "id": "astral_lance",
+        "name": "Astral Lance",
+        "cost": 2,
+        "description": "Fire a lance of pure starlight (+4 bonus damage) that ignores enemy Armor and Ward.",
+        "bonusDamage": 4,
+        "pierceArmor": true,
+        "cleanseDreadOnCritOrKill": false,
+        "stun": false,
+        "evade": false
+      }
+    },
+    {
+      "id": "shadowblade",
+      "name": "Shadowblade",
+      "shortTitle": "Guild Rogue",
+      "portraitKey": "portrait_shadowblade",
+      "tagline": "Relic-breaker and scout who bends luck when steel falls short.",
+      "perkName": "Fate's Gamble",
+      "perkDescription": "Advantage on Agility checks, once per chapter stage reroll a failed skill check, and starts with a Smoke Veil.",
+      "primaryStat": "agility",
+      "baseHp": 24,
+      "baseFocus": 7,
+      "baseArmor": 12,
+      "recommendedStats": { "might": 11, "arcana": 11, "agility": 16, "presence": 12 },
+      "startingGear": {
+        "weapon": "gear_whisper_daggers",
+        "armor": "gear_wayfarer_leathers",
+        "talisman": null
+      },
+      "startingItems": ["consumable_starleaf_draught", "consumable_smoke_veil"],
+      "skill": {
+        "id": "veil_strike",
+        "name": "Shadowstep Strike",
+        "cost": 2,
+        "description": "Strike a foe's blind spot (+4 damage, +3 more if foe is telegraphing a heavy blow) and gain +4 Evasion until next turn.",
+        "bonusDamage": 4,
+        "telegraphBonus": 3,
+        "evade": true,
+        "pierceArmor": false,
+        "stun": false
+      }
+    },
+    {
+      "id": "warden",
+      "name": "Fey Warden",
+      "shortTitle": "Root Warden",
+      "portraitKey": "portrait_warden",
+      "tagline": "Keeper of emerald shrines who walks unbowed through the Veil.",
+      "perkName": "Whisper of Roots",
+      "perkDescription": "Negates the first Veil Dread gain in every chapter and heals 2 Vitality after victorious battles.",
+      "primaryStat": "presence",
+      "baseHp": 26,
+      "baseFocus": 7,
+      "baseArmor": 12,
+      "recommendedStats": { "might": 12, "arcana": 12, "agility": 12, "presence": 14 },
+      "startingGear": {
+        "weapon": "gear_thornwood_spear",
+        "armor": "gear_barkweave_coat",
+        "talisman": null
+      },
+      "startingItems": ["consumable_starleaf_draught"],
+      "skill": {
+        "id": "briar_grasp",
+        "name": "Briar Grasp",
+        "cost": 2,
+        "description": "Ensnare the enemy in silver thorns (+3 damage) and Stun them, canceling their telegraphed attack!",
+        "bonusDamage": 3,
+        "stun": true,
+        "pierceArmor": false,
+        "evade": false
+      }
+    }
+  ],
+  "epithets": {
+    "firstNames": [
+      "Aldric", "Lyra", "Seren", "Rowan", "Kaelen", "Isolde", "Torin", "Vespera",
+      "Garrick", "Elowen", "Caspian", "Briar", "Theron", "Mirelle", "Orin", "Sylvi"
+    ],
+    "surnames": [
+      "Dawnblade", "Starweaver", "Ashvale", "Thornbrook", "Silverwind", "Oakhart",
+      "Vespermark", "Runekeeper", "Emberfall", "Glassward", "Nighthollow", "Sunspire"
+    ],
+    "titles": [
+      "of the Gilded Road", "of Oakhaven", "the Unbound", "the Lantern-Bearer",
+      "of the Star-Spire", "the Veil-Walker", "the Oathsworn"
+    ]
+  },
+  "equipment": {
+    "gear_sunsteel_blade": {
+      "id": "gear_sunsteel_blade",
+      "name": "Sunsteel Longsword",
+      "slot": "weapon",
+      "rarity": "common",
+      "price": 40,
+      "attackBonus": 1,
+      "damageDie": 8,
+      "bonusStats": {},
+      "description": "Tempered in Oakhaven's dawn-brazier. Reliable and keen."
+    },
+    "gear_starwood_staff": {
+      "id": "gear_starwood_staff",
+      "name": "Starwood Focus Staff",
+      "slot": "weapon",
+      "rarity": "common",
+      "price": 40,
+      "attackBonus": 1,
+      "damageDie": 6,
+      "bonusStats": { "arcana": 1 },
+      "description": "Carved from lightning-struck birch; channels arcane bolts smoothly."
+    },
+    "gear_whisper_daggers": {
+      "id": "gear_whisper_daggers",
+      "name": "Twin Whisper Daggers",
+      "slot": "weapon",
+      "rarity": "common",
+      "price": 40,
+      "attackBonus": 2,
+      "damageDie": 6,
+      "bonusStats": {},
+      "description": "Balanced obsidian-edged blades that strike twice in a heartbeat."
+    },
+    "gear_thornwood_spear": {
+      "id": "gear_thornwood_spear",
+      "name": "Thornwood Glaive",
+      "slot": "weapon",
+      "rarity": "common",
+      "price": 40,
+      "attackBonus": 1,
+      "damageDie": 8,
+      "bonusStats": {},
+      "description": "Living silver-ash polearm favored by frontier wardens."
+    },
+    "gear_runebound_greatsword": {
+      "id": "gear_runebound_greatsword",
+      "name": "Runebound Claymore",
+      "slot": "weapon",
+      "rarity": "rare",
+      "price": 95,
+      "attackBonus": 3,
+      "damageDie": 10,
+      "bonusStats": { "might": 2 },
+      "description": "Etched with First Concord wards that flare golden against Veilspawn."
+    },
+    "gear_celestial_scepter": {
+      "id": "gear_celestial_scepter",
+      "name": "Astrolabe Scepter",
+      "slot": "weapon",
+      "rarity": "rare",
+      "price": 95,
+      "attackBonus": 3,
+      "damageDie": 8,
+      "bonusStats": { "arcana": 2 },
+      "maxFocusBonus": 2,
+      "description": "Miniaturized brass rings orbit its tip, humming with sunken starlight."
+    },
+    "gear_nightglass_fang": {
+      "id": "gear_nightglass_fang",
+      "name": "Nightglass Saber",
+      "slot": "weapon",
+      "rarity": "rare",
+      "price": 95,
+      "attackBonus": 3,
+      "damageDie": 8,
+      "bonusStats": { "agility": 2 },
+      "description": "Weightless volcanic glass honed to slice through shadow and chainmail."
+    },
+    "gear_sovereign_halberd": {
+      "id": "gear_sovereign_halberd",
+      "name": "Ashenspire Sun-Halberd",
+      "slot": "weapon",
+      "rarity": "mythic",
+      "price": 175,
+      "attackBonus": 4,
+      "damageDie": 12,
+      "bonusStats": { "might": 2, "presence": 2 },
+      "description": "Forged over living ley-flame. One swing scatters shadows like sparks."
+    },
+    "gear_bastion_brigandine": {
+      "id": "gear_bastion_brigandine",
+      "name": "Bastion Brigandine",
+      "slot": "armor",
+      "rarity": "common",
+      "price": 35,
+      "armorBonus": 1,
+      "maxHpBonus": 2,
+      "bonusStats": {},
+      "description": "Riveted steel scales over oiled leather."
+    },
+    "gear_archive_mantle": {
+      "id": "gear_archive_mantle",
+      "name": "Gilded Archive Mantle",
+      "slot": "armor",
+      "rarity": "common",
+      "price": 35,
+      "armorBonus": 1,
+      "maxFocusBonus": 1,
+      "bonusStats": {},
+      "description": "Woven with copper sigil-thread that dampens stray curses."
+    },
+    "gear_wayfarer_leathers": {
+      "id": "gear_wayfarer_leathers",
+      "name": "Wayfarer Shadow-Leathers",
+      "slot": "armor",
+      "rarity": "common",
+      "price": 35,
+      "armorBonus": 1,
+      "bonusStats": { "agility": 1 },
+      "description": "Silent buckskin dyed with charcoal and silver-moss."
+    },
+    "gear_barkweave_coat": {
+      "id": "gear_barkweave_coat",
+      "name": "Silver-Bark Coat",
+      "slot": "armor",
+      "rarity": "common",
+      "price": 35,
+      "armorBonus": 1,
+      "maxHpBonus": 2,
+      "bonusStats": {},
+      "description": "Supple woven silverwood bark gifted by the Canopy elders."
+    },
+    "gear_valen_plate": {
+      "id": "gear_valen_plate",
+      "name": "Aegis of Valenmoor",
+      "slot": "armor",
+      "rarity": "rare",
+      "price": 110,
+      "armorBonus": 3,
+      "maxHpBonus": 6,
+      "bonusStats": { "presence": 1 },
+      "description": "Burnished heraldic cuirass bearing the winged spire crest."
+    },
+    "gear_starlight_vestments": {
+      "id": "gear_starlight_vestments",
+      "name": "Vestments of the Loom",
+      "slot": "armor",
+      "rarity": "mythic",
+      "price": 165,
+      "armorBonus": 3,
+      "maxHpBonus": 4,
+      "maxFocusBonus": 3,
+      "bonusStats": { "arcana": 2, "agility": 1 },
+      "description": "Spun from prism-silk that bends blades and Veil energy alike."
+    },
+    "gear_silverleaf_charm": {
+      "id": "gear_silverleaf_charm",
+      "name": "Silverleaf Heart-Charm",
+      "slot": "talisman",
+      "rarity": "rare",
+      "price": 75,
+      "armorBonus": 1,
+      "maxHpBonus": 5,
+      "bonusStats": { "presence": 2 },
+      "description": "A living silver birch leaf encased in amber; radiates steady warmth."
+    },
+    "gear_vesper_compass": {
+      "id": "gear_vesper_compass",
+      "name": "Vesper Star-Compass",
+      "slot": "talisman",
+      "rarity": "rare",
+      "price": 85,
+      "maxFocusBonus": 2,
+      "bonusStats": { "arcana": 2, "agility": 1 },
+      "description": "Points not to north, but toward hidden truths and unguarded locks."
+    },
+    "gear_ember_signet": {
+      "id": "gear_ember_signet",
+      "name": "Cinder-Lord's Signet",
+      "slot": "talisman",
+      "rarity": "mythic",
+      "price": 130,
+      "attackBonus": 2,
+      "maxHpBonus": 4,
+      "bonusStats": { "might": 2, "presence": 1 },
+      "description": "Warm obsidian ring tempered in the heart of Ashenspire Forge."
+    },
+    "gear_lantern_brooch": {
+      "id": "gear_lantern_brooch",
+      "name": "Wayfarer's Ward Brooch",
+      "slot": "talisman",
+      "rarity": "common",
+      "price": 55,
+      "armorBonus": 1,
+      "maxHpBonus": 3,
+      "bonusStats": { "presence": 1 },
+      "description": "An antique brass brooch sold by Elric; glows softly near danger."
+    }
+  },
+  "consumables": {
+    "consumable_starleaf_draught": {
+      "id": "consumable_starleaf_draught",
+      "name": "Starleaf Draught",
+      "price": 25,
+      "icon": "potion",
+      "healHp": 12,
+      "restoreFocus": 0,
+      "cleanseDread": 0,
+      "wardBonus": 0,
+      "description": "Restores 12 Vitality immediately—usable in camp or mid-combat."
+    },
+    "consumable_aether_phial": {
+      "id": "consumable_aether_phial",
+      "name": "Aether Phial",
+      "price": 30,
+      "icon": "phial",
+      "healHp": 0,
+      "restoreFocus": 4,
+      "cleanseDread": 0,
+      "wardBonus": 0,
+      "description": "Restores 4 Focus to fuel Class Skills and spells."
+    },
+    "consumable_smoke_veil": {
+      "id": "consumable_smoke_veil",
+      "name": "Alchemist's Smoke Veil",
+      "price": 30,
+      "icon": "smoke",
+      "healHp": 0,
+      "restoreFocus": 1,
+      "cleanseDread": 0,
+      "wardBonus": 8,
+      "description": "Grants +8 Ward Shield for the turn and restores 1 Focus."
+    },
+    "consumable_sun_incense": {
+      "id": "consumable_sun_incense",
+      "name": "Dawnfire Incense",
+      "price": 45,
+      "icon": "incense",
+      "healHp": 6,
+      "restoreFocus": 0,
+      "cleanseDread": 1,
+      "wardBonus": 0,
+      "description": "Restores 6 Vitality and purges 1 Veil Dread."
+    }
+  },
+  "relics": {
+    "relic_wayfarer_seal": {
+      "id": "relic_wayfarer_seal",
+      "name": "Guild Wayfarer's Seal",
+      "icon": "seal",
+      "description": "Proves your authority from Oakhaven Bastion and opens warded gates."
+    },
+    "relic_moonstone_lens": {
+      "id": "relic_moonstone_lens",
+      "name": "Moonstone Prism Lens",
+      "icon": "lens",
+      "description": "Reveals invisible fey glyphs and falsified runes in silver light."
+    },
+    "relic_silver_bell": {
+      "id": "relic_silver_bell",
+      "name": "Heartwood Chime",
+      "icon": "bell",
+      "description": "Its pure tone calms corrupted spirits and shatters thorn wards."
+    },
+    "relic_celestial_key": {
+      "id": "relic_celestial_key",
+      "name": "Brass Meridian Key",
+      "icon": "key",
+      "description": "Locks or reverses the spinning brass gears of the Sunken Astrolabe."
+    },
+    "relic_tide_mirror": {
+      "id": "relic_tide_mirror",
+      "name": "Mirror-Shard of Vesper",
+      "icon": "mirror",
+      "description": "Reflects starlight illusions and exposes hidden astral currents."
+    },
+    "relic_quench_rune": {
+      "id": "relic_quench_rune",
+      "name": "Frost-Quench Brand",
+      "icon": "rune",
+      "description": "Cools runaway ley-valves and weakens molten drake scales."
+    },
+    "relic_forge_charter": {
+      "id": "relic_forge_charter",
+      "name": "True Smiths' Charter",
+      "icon": "scroll",
+      "description": "Bears the original Concord oaths—turns wavering forge-guards into allies."
+    },
+    "relic_concord_prism": {
+      "id": "relic_concord_prism",
+      "name": "First Concord Prism",
+      "icon": "prism",
+      "description": "A facet of pure alabaster starlight capable of anchoring the Sovereign Loom."
+    },
+    "relic_oath_lantern": {
+      "id": "relic_oath_lantern",
+      "name": "Unfading Oath-Lantern",
+      "icon": "lantern",
+      "description": "Burns with remembered deeds from across Valenmoor, warding off the Veil."
+    }
+  },
+  "lore": {
+    "lore_oath_pillar": { "label": "Wayfarer's First Maxim", "type": "optional" },
+    "lore_waystone_cipher": { "label": "Silverwood Waystone Cipher", "type": "critical" },
+    "lore_corrupted_sap": { "label": "Blackened Heart-Sap Sample", "type": "critical" },
+    "lore_dryad_pact": { "label": "Dryad Crown-Song Fragment", "type": "optional" },
+    "lore_blight_architect": { "label": "Hollow Thorne's Sigil", "type": "critical" },
+    "lore_backward_tide": { "label": "Reversing Star-Tide Ledger", "type": "critical" },
+    "lore_sunken_orrery": { "label": "Sunken Orrery Alignment", "type": "critical" },
+    "lore_drowned_chorus": { "label": "Archivist's Submerged Lament", "type": "optional" },
+    "lore_veil_anchor": { "label": "Spire-Anchor Ley Formula", "type": "critical" },
+    "lore_siphon_valve": { "label": "Sabotaged Ley-Valve Schematic", "type": "critical" },
+    "lore_drake_oath": { "label": "Cinder-Drake's Ancient Name", "type": "critical" },
+    "lore_ember_tithe": { "label": "Zealots' Hidden Tithe Roll", "type": "optional" },
+    "lore_spire_fracture": { "label": "Crown of Glass Faultlines", "type": "critical" },
+    "lore_loom_weave": { "label": "Sovereign Loom Harmonic", "type": "critical" },
+    "lore_first_concord": { "label": "Truth of the First Concord", "type": "critical" },
+    "lore_warden_memory": { "label": "Echo of the Last Sentinel", "type": "optional" }
+  },
+  "riddles": {
+    "riddle_gate_seal": {
+      "id": "riddle_gate_seal",
+      "title": "The Gatehouse Maxim",
+      "prompt": "Carved above Oakhaven's arch: 'I have cities without stone, rivers without water, and forests without leaves. What guides every Wayfarer?'",
+      "answers": ["A Map", "A Lantern", "A Compass", "A Shadow"],
+      "correctIndex": 0,
+      "rewardRelic": "relic_wayfarer_seal",
+      "rewardLore": "lore_oath_pillar",
+      "successNote": "The archway rune flares warm gold, unlocking the Guild Wayfarer's Seal!",
+      "failNote": "The rune dims—no matter, you memorize the inscription and press onward."
+    },
+    "riddle_silver_bark": {
+      "id": "riddle_silver_bark",
+      "title": "Dryad Bark-Cipher",
+      "prompt": "Three rings are carved into the silver birch: Dawn brings bloom, Dusk brings frost, and what light unveils hidden paths in the Canopy?",
+      "answers": ["Moonlight", "Emberlight", "Torchsmoke", "Thunder"],
+      "correctIndex": 0,
+      "rewardRelic": "relic_moonstone_lens",
+      "rewardLore": "lore_waystone_cipher",
+      "successNote": "A recessed hollow opens in the birch, revealing a gleaming Moonstone Prism Lens!",
+      "failNote": "Sap seals the hollow shut before you can pry it open."
+    },
+    "riddle_hollow_chime": {
+      "id": "riddle_hollow_chime",
+      "title": "Shrine of the Three Winds",
+      "prompt": "To calm the screaming briars, strike the bell that answers silence without breaking it. Which metal rings true to the fey?",
+      "answers": ["Cold Iron", "Pure Silver", "Lead", "Black Tin"],
+      "correctIndex": 1,
+      "rewardRelic": "relic_silver_bell",
+      "rewardLore": "lore_dryad_pact",
+      "successNote": "Pure silver resonates through the mist! You claim the Heartwood Chime.",
+      "failNote": "A harsh discord echoes through the hollow, rattling the thorns."
+    },
+    "riddle_astrolabe_ring": {
+      "id": "riddle_astrolabe_ring",
+      "title": "The Reversed Meridian",
+      "prompt": "The brass dial marks four tides: Zenith rises, Nadir sleeps, Ebb retreats. Which ring halts the backward spin of Lake Vesper?",
+      "answers": ["The Eclipse Pin", "The Anchor Meridian", "The Comet Gear", "The Drift Dial"],
+      "correctIndex": 1,
+      "rewardRelic": "relic_celestial_key",
+      "rewardLore": "lore_sunken_orrery",
+      "successNote": "With a resonant click, the Brass Meridian Key drops cleanly into your palm!",
+      "failNote": "The brass rings spin faster for a breath, locking the compartment."
+    },
+    "riddle_mirror_water": {
+      "id": "riddle_mirror_water",
+      "title": "Inscription of Mirror Lake",
+      "prompt": "'Look down and you see the heavens; drop a stone and the sky shatters.' What preserves a reflection without breaking it?",
+      "answers": ["Stillness", "Flame", "Wind", "Iron"],
+      "correctIndex": 0,
+      "rewardRelic": "relic_tide_mirror",
+      "rewardLore": "lore_drowned_chorus",
+      "successNote": "The water calms to glass, lifting the Mirror-Shard of Vesper onto the plinth!",
+      "failNote": "Ripples swallow the glyph before it stabilizes."
+    },
+    "riddle_forge_valve": {
+      "id": "riddle_forge_valve",
+      "title": "Dwarven-Elven Quench Seal",
+      "prompt": "The foundry plaques warn: 'Fire shapes iron, Air feeds fire, but what disciplines the ley-vein when pride burns too bright?'",
+      "answers": ["More Coal", "Frost-Quench", "Sulfur", "Gold Leaf"],
+      "correctIndex": 1,
+      "rewardRelic": "relic_quench_rune",
+      "rewardLore": "lore_siphon_valve",
+      "successNote": "The cooling locker hisses open—you retrieve the Frost-Quench Brand!",
+      "failNote": "Steam vents across the plaque, sealing the iron clasp."
+    },
+    "riddle_smith_oath": {
+      "id": "riddle_smith_oath",
+      "title": "Anvil of the True Smiths",
+      "prompt": "Four tools hang over the master anvil. Which one binds two metals into one Concord rather than cutting them apart?",
+      "answers": ["The Chisel", "The Forge-Hammer", "The Shears", "The File"],
+      "correctIndex": 1,
+      "rewardRelic": "relic_forge_charter",
+      "rewardLore": "lore_ember_tithe",
+      "successNote": "A secret drawer beneath the anvil yields the True Smiths' Charter!",
+      "failNote": "The rune-lock cools into solid basalt."
+    },
+    "riddle_prism_spire": {
+      "id": "riddle_prism_spire",
+      "title": "Refraction of the First Spire",
+      "prompt": "'One beam enters the Crown of Glass; seven hues depart.' What binds scattered light back into a single anchor?",
+      "answers": ["A Prism", "A Veil", "A Shadow", "A Bell"],
+      "correctIndex": 0,
+      "rewardRelic": "relic_concord_prism",
+      "rewardLore": "lore_first_concord",
+      "successNote": "Alabaster light coalesces into the First Concord Prism!",
+      "failNote": "The light fractures into harmless sparks."
+    },
+    "riddle_sentinel_flame": {
+      "id": "riddle_sentinel_flame",
+      "title": "The Last Sentinel's Vigil",
+      "prompt": "At the edge of unmaking, gold rusts and blades snap. What is the only fuel the Aether Veil cannot devour?",
+      "answers": ["Kept Oaths", "Dry Timber", "Oil", "Coin"],
+      "correctIndex": 0,
+      "rewardRelic": "relic_oath_lantern",
+      "rewardLore": "lore_warden_memory",
+      "successNote": "The Unfading Oath-Lantern ignites with steady amber brilliance!",
+      "failNote": "The lantern cools to a faint ember."
+    }
+  },
+  "enemies": {
+    "training_construct": {
+      "id": "training_construct",
+      "name": "Clockwork Sparring Knight",
+      "title": "Guild Automaton",
+      "isBoss": false,
+      "hp": 14,
+      "ac": 11,
+      "attackBonus": 3,
+      "rewardGold": 20,
+      "artKey": "enemy_construct",
+      "intents": [
+        { "type": "attack", "label": "Practice Slash", "damage": 4, "dread": 0 },
+        { "type": "guard", "label": "Buckler Brace", "ward": 4 },
+        { "type": "heavy", "label": "Wind-Up Lunge", "damage": 6, "dread": 0 }
+      ]
+    },
+    "thorn_stalker": {
+      "id": "thorn_stalker",
+      "name": "Blighted Thorn-Stalker",
+      "title": "Twisted Forest Hound",
+      "isBoss": false,
+      "hp": 18,
+      "ac": 12,
+      "attackBonus": 4,
+      "rewardGold": 28,
+      "artKey": "enemy_thorn",
+      "intents": [
+        { "type": "attack", "label": "Briar Fang", "damage": 5, "dread": 0 },
+        { "type": "heavy", "label": "Rending Pounce", "damage": 8, "dread": 0 },
+        { "type": "dread", "label": "Spore Howl", "damage": 3, "dread": 1 }
+      ]
+    },
+    "hollow_warden": {
+      "id": "hollow_warden",
+      "name": "Vaelen the Hollow-Bough",
+      "title": "Chapter I Boss · Corrupted Dryad Sentinel",
+      "isBoss": true,
+      "hp": 30,
+      "ac": 13,
+      "attackBonus": 5,
+      "rewardGold": 65,
+      "weaknessRelic": "relic_silver_bell",
+      "weaknessNote": "Heartwood Chime shatters Vaelen's thorn armor (-2 AC, -6 HP)!",
+      "artKey": "enemy_dryad_boss",
+      "intents": [
+        { "type": "attack", "label": "Lashing Roots", "damage": 6, "dread": 0 },
+        { "type": "guard", "label": "Ironbark Shell", "ward": 6 },
+        { "type": "heavy", "label": "Heart-Rot Cleave", "damage": 10, "dread": 0 },
+        { "type": "dread", "label": "Veil Sap Burst", "damage": 5, "dread": 1 }
+      ]
+    },
+    "drowned_sentinel": {
+      "id": "drowned_sentinel",
+      "name": "Gilded Tide-Sentinel",
+      "title": "Submerged Observatory Guard",
+      "isBoss": false,
+      "hp": 22,
+      "ac": 13,
+      "attackBonus": 5,
+      "rewardGold": 35,
+      "artKey": "enemy_sentinel",
+      "intents": [
+        { "type": "attack", "label": "Trident Thrust", "damage": 6, "dread": 0 },
+        { "type": "guard", "label": "Brass Bulwark", "ward": 6 },
+        { "type": "heavy", "label": "Undertow Sweep", "damage": 9, "dread": 0 }
+      ]
+    },
+    "astral_warden": {
+      "id": "astral_warden",
+      "name": "Arch-Orrery Wraith",
+      "title": "Chapter II Boss · Star-Drowned Keeper",
+      "isBoss": true,
+      "hp": 36,
+      "ac": 14,
+      "attackBonus": 6,
+      "rewardGold": 80,
+      "weaknessRelic": "relic_celestial_key",
+      "weaknessNote": "Brass Meridian Key jams the wraith's orbital rings (-2 AC, -7 HP)!",
+      "artKey": "enemy_astral_boss",
+      "intents": [
+        { "type": "dread", "label": "Memory Undertow", "damage": 6, "dread": 1 },
+        { "type": "heavy", "label": "Falling Star-Arc", "damage": 11, "dread": 0 },
+        { "type": "guard", "label": "Eclipse Halo", "ward": 7 },
+        { "type": "attack", "label": "Gravity Lash", "damage": 7, "dread": 0 }
+      ]
+    },
+    "ember_zealot": {
+      "id": "ember_zealot",
+      "name": "Ashen Covenant Pyromancer",
+      "title": "Ley-Siphon Cultist",
+      "isBoss": false,
+      "hp": 26,
+      "ac": 13,
+      "attackBonus": 6,
+      "rewardGold": 42,
+      "artKey": "enemy_zealot",
+      "intents": [
+        { "type": "attack", "label": "Cinder Bolt", "damage": 7, "dread": 0 },
+        { "type": "heavy", "label": "Slag Eruption", "damage": 11, "dread": 0 },
+        { "type": "dread", "label": "Rift Chant", "damage": 5, "dread": 1 }
+      ]
+    },
+    "cinder_drake": {
+      "id": "cinder_drake",
+      "name": "Ignaroth, Chained Cinder-Drake",
+      "title": "Chapter III Boss · Ley-Forged Wyrm",
+      "isBoss": true,
+      "hp": 44,
+      "ac": 15,
+      "attackBonus": 7,
+      "rewardGold": 100,
+      "weaknessRelic": "relic_quench_rune",
+      "weaknessNote": "Frost-Quench Brand cracks Ignaroth's molten scales (-2 AC, -9 HP)!",
+      "artKey": "enemy_drake_boss",
+      "intents": [
+        { "type": "attack", "label": "Molten Claw", "damage": 8, "dread": 0 },
+        { "type": "heavy", "label": "Caldera Breath", "damage": 13, "dread": 0 },
+        { "type": "guard", "label": "Basalt Mantle", "ward": 8 },
+        { "type": "dread", "label": "Ley-Roar", "damage": 6, "dread": 1 }
+      ]
+    },
+    "veil_knight": {
+      "id": "veil_knight",
+      "name": "Prism-Shattered Knight",
+      "title": "Echo of the First Concord",
+      "isBoss": false,
+      "hp": 32,
+      "ac": 14,
+      "attackBonus": 7,
+      "rewardGold": 55,
+      "artKey": "enemy_veil_knight",
+      "intents": [
+        { "type": "attack", "label": "Glass-Edge Cleave", "damage": 8, "dread": 0 },
+        { "type": "guard", "label": "Refracted Guard", "ward": 8 },
+        { "type": "heavy", "label": "Sundered Thrust", "damage": 12, "dread": 0 }
+      ]
+    },
+    "veil_sovereign": {
+      "id": "veil_sovereign",
+      "name": "The Unwoven Regent",
+      "title": "Grand Finale Boss · Herald of the Aether Veil",
+      "isBoss": true,
+      "hp": 54,
+      "ac": 15,
+      "attackBonus": 8,
+      "rewardGold": 140,
+      "weaknessRelic": "relic_concord_prism",
+      "weaknessNote": "First Concord Prism anchors the Regent in mortal light (-2 AC, -12 HP)!",
+      "artKey": "enemy_sovereign_boss",
+      "intents": [
+        { "type": "heavy", "label": "Unmaking Arc", "damage": 14, "dread": 0 },
+        { "type": "dread", "label": "Echo of Oblivion", "damage": 7, "dread": 1 },
+        { "type": "guard", "label": "Mirror Bastion", "ward": 9 },
+        { "type": "attack", "label": "Spire-Shard Volley", "damage": 9, "dread": 0 }
+      ]
+    }
+  },
+  "elricBanter": [
+    "\"Ah, still breathing! That already puts you ahead of last Tuesday's guild intake. Mind the sunsteel—it's hot off an entirely legal salvage contract.\"",
+    "\"Welcome back to Elric's Curio Forge! Every relic on my shelves has provenance papers—mostly written by me, in very convincing calligraphy.\"",
+    "\"Going back toward the Star-Spires? Take a Starleaf Draught. Dying in a ruin is terrible for repeat business.\"",
+    "\"Between us, I once traded a talking helm for three barrels of Oakhaven cider. Best bargain of my life—the helm never stopped critiquing my posture.\"",
+    "\"You bring the heroism, I bring the warded iron. Together we make the Aether Veil look like a mild drizzle.\""
+  ]
+}

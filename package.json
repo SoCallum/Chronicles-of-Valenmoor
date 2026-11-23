@@ -1,0 +1,17 @@
+{
+  "name": "chronicles-of-valenmoor",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Chronicles of Valenmoor — A high-fantasy roguelike narrative RPG combining branching chronicles, interactive rune riddles, tactical d20 combat, and a Hall of Legends leaderboard.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test tests/engine.test.js",
+    "check": "node --check server.js && node --check src/engine/scoring.js && node --check src/engine/dice.js && node --check src/engine/combat.js && node --check src/engine/state.js && node --check src/engine/campaign.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

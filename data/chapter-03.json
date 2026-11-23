@@ -1,0 +1,445 @@
+[
+  {
+    "id": "ch3_n1",
+    "chapterId": "chapter-03",
+    "stage": "opening",
+    "title": "The Obsidian Chain-Bridge",
+    "summary": "Suspended over boiling ley-magma, Ashenspire Forge roars with overdriven bellows.",
+    "entry": {
+      "location": "Ashenspire Caldera · Iron Span",
+      "time": "Crimson Dusk",
+      "mood": ["epic", "perilous"]
+    },
+    "tags": ["opening", "exploration"],
+    "art": {
+      "sceneKey": "ashenspire_forge",
+      "caption": "Colossal iron chains suspend a glowing basalt foundry above veins of liquid gold magma.",
+      "relicCard": {
+        "riddleId": "riddle_forge_valve",
+        "artKey": "relic_quench_card",
+        "caption": "Dwarven Quench Locker — click to flip & decipher"
+      }
+    },
+    "text": [
+      "Heat ripples upward from the caldera floor as you cross the riveted chain-bridge into Ashenspire Forge. Pillars of gilded steam shriek from pressure stacks that should have lain silent for a hundred winters.",
+      "Master-Smith Brannor kneels beside a shattered anvil near the gatehouse, soot streaking his braided beard. \"The Ashen Covenant seized the Heart-Crucible,\" he rasps. \"They're pouring raw ley-fire onto Ignaroth's bindings—the elder cinder-drake who guarded the first smiths!\"",
+      "Two paths descend into the foundry: the high Gantry Catwalk overlooking the zealots, or the Quench Tunnels running straight beneath the crucible."
+    ],
+    "onEnter": {
+      "flagsAdd": ["Entered Ashenspire"]
+    },
+    "choices": [
+      {
+        "id": "ch3_n1_inspect_valves",
+        "label": "Trace the pressure pipes in the Quench Tunnels to bleed off the zealots' ley-siphon.",
+        "stance": "arcane",
+        "relicBypass": {
+          "itemId": "relic_quench_rune",
+          "bonusText": "Frost-Quench Brand cools the manifold cleanly (+100 Mastery)"
+        },
+        "check": {
+          "stat": "arcana",
+          "dc": 13,
+          "advantageClasses": ["scholar"],
+          "successNext": "ch3_n2",
+          "failNext": "ch3_n3",
+          "failEffects": { "hpDelta": -3, "dreadDelta": 1 }
+        },
+        "effects": {
+          "loreAdd": ["lore_siphon_valve"],
+          "flagsAdd": ["Cooled Outer Manifold"],
+          "goldDelta": 25
+        }
+      },
+      {
+        "id": "ch3_n1_catwalk",
+        "label": "Vault across the swaying iron gantries above the pyromancers' watch.",
+        "stance": "cunning",
+        "check": {
+          "stat": "agility",
+          "dc": 13,
+          "advantageClasses": ["shadowblade"],
+          "successNext": "ch3_n3",
+          "failNext": "ch3_n4",
+          "failEffects": { "hpDelta": -4 }
+        },
+        "effects": {
+          "flagsAdd": ["High Gantry Route"]
+        }
+      },
+      {
+        "id": "ch3_n1_quip_brannor",
+        "label": "\"A chained dragon in a volcanic basement? Honestly, I've seen worse guild meetings.\" Trade plans with Brannor.",
+        "stance": "witty",
+        "next": "ch3_n2",
+        "effects": {
+          "loreAdd": ["lore_drake_oath"],
+          "flagsAdd": ["Brannor's Counsel"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ch3_n2",
+    "chapterId": "chapter-03",
+    "stage": "investigation",
+    "title": "The Hall of True Smiths",
+    "summary": "Behind molten curtains sits the original Dwarven-Elven anvil where the drake's pact was sealed.",
+    "entry": {
+      "location": "Ashenspire Forge · Concord Anvil",
+      "time": "Molten Glow",
+      "mood": ["lore", "investigation"]
+    },
+    "tags": ["investigation", "forge"],
+    "art": {
+      "sceneKey": "ashenspire_forge",
+      "caption": "Runed pillars encircle a black star-iron anvil untouched by the encroaching slag.",
+      "relicCard": {
+        "riddleId": "riddle_smith_oath",
+        "artKey": "relic_charter_card",
+        "caption": "Anvil of the True Smiths — click to flip & unlock the Charter"
+      }
+    },
+    "text": [
+      "Brannor's secret passage opens into the Hall of True Smiths. Carved across the basalt ceiling is the forgotten truth: Ignaroth was never enslaved—the cinder-drake swore a voluntary oath to temper the Star-Spire anchors, until Hollow Crown zealots drove agonizing Veil-chains through its wings.",
+      "Footsteps ring on iron grates as an Ashen Covenant Pyromancer strides into the hall, brandishing a smoking siphon-rod!"
+    ],
+    "choices": [
+      {
+        "id": "ch3_n2_fight_zealot",
+        "label": "Strike down the Ashen Covenant Pyromancer before they sound the horn!",
+        "stance": "heroic",
+        "combat": {
+          "enemyId": "ember_zealot",
+          "victoryNext": "ch3_n5",
+          "fleeNext": "ch3_n4"
+        },
+        "effects": {
+          "loreAdd": ["lore_drake_oath"],
+          "goldDelta": 25
+        }
+      },
+      {
+        "id": "ch3_n2_rally_guards",
+        "label": "Show the True Smiths' Charter to the wavering forge-guards flanking the pyromancer!",
+        "stance": "heroic",
+        "relicBypass": {
+          "itemId": "relic_forge_charter",
+          "bonusText": "True Smiths' Charter turns the forge-guards against the zealot (+100 Mastery)!"
+        },
+        "check": {
+          "stat": "presence",
+          "dc": 14,
+          "advantageClasses": ["paladin", "warden"],
+          "successNext": "ch3_n5",
+          "failNext": "ch3_n4",
+          "failEffects": { "dreadDelta": 1 }
+        },
+        "effects": {
+          "flagsAdd": ["Forge-Guards Rallied"],
+          "loreAdd": ["lore_ember_tithe"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ch3_n3",
+    "chapterId": "chapter-03",
+    "stage": "investigation",
+    "title": "The Crucible Catwalk",
+    "summary": "From the iron rafters, you spot the zealots' tithe chest and a pyromancer priming the final chain.",
+    "entry": {
+      "location": "Ashenspire Forge · Upper Crucible",
+      "time": "Molten Glow",
+      "mood": ["tense", "action"]
+    },
+    "tags": ["investigation", "combat"],
+    "art": {
+      "sceneKey": "ashenspire_heart",
+      "caption": "Chains thick as oak trunks glow white-hot over a churning basin of ley-fire.",
+      "relicCard": {
+        "riddleId": "riddle_smith_oath",
+        "artKey": "relic_charter_card",
+        "caption": "Master Foreman's Strongbox — click to flip & claim the Charter"
+      }
+    },
+    "text": [
+      "Sparks drift like fireflies across the catwalk. Below, an Ashen Covenant Pyromancer chants over the primary siphon-lever, channeling dark Veil energy straight into Ignaroth's collar.",
+      "An open iron coffer beside them holds stolen gold—and the final sigil needed to ascend to the Crown of Glass."
+    ],
+    "choices": [
+      {
+        "id": "ch3_n3_drop_attack",
+        "label": "Drop from the catwalk and engage the Pyromancer in steel and flame!",
+        "stance": "heroic",
+        "combat": {
+          "enemyId": "ember_zealot",
+          "victoryNext": "ch3_n5",
+          "fleeNext": "ch3_n4"
+        },
+        "effects": {
+          "loreAdd": ["lore_drake_oath", "lore_siphon_valve"],
+          "goldDelta": 30
+        }
+      },
+      {
+        "id": "ch3_n3_sabotage_lever",
+        "label": "Sever the counterweight cable to jam the Veil siphon cleanly.",
+        "stance": "cunning",
+        "check": {
+          "stat": "agility",
+          "dc": 14,
+          "advantageClasses": ["shadowblade"],
+          "successNext": "ch3_n5",
+          "failNext": "ch3_n4",
+          "failEffects": { "hpDelta": -4, "dreadDelta": 1 }
+        },
+        "effects": {
+          "flagsAdd": ["Severed Siphon Cable"],
+          "dreadDelta": -1
+        }
+      }
+    ]
+  },
+  {
+    "id": "ch3_n4",
+    "chapterId": "chapter-03",
+    "stage": "confrontation",
+    "title": "The Slag Spillway",
+    "summary": "Molten ley-fire breaches the lower floor as the caldera trembles.",
+    "entry": {
+      "location": "Ashenspire Forge · Lower Spillway",
+      "time": "Eruption",
+      "mood": ["urgent", "perilous"]
+    },
+    "tags": ["hazard", "confrontation"],
+    "art": {
+      "sceneKey": "ashenspire_heart",
+      "caption": "Rivers of liquid gold surge around basalt stepping-stones toward the Crucible."
+    },
+    "text": [
+      "The foundry shudders as a massive wing-beat blows ember-storms through the archway. Molten slag spills across the stone causeway, leaving only narrow runed pillars above the blaze.",
+      "Reach the Heart-Crucible before Ignaroth breaks free in berserk agony!"
+    ],
+    "choices": [
+      {
+        "id": "ch3_n4_leap",
+        "label": "Sprint across the basalt pillars through the rising ember-gale.",
+        "stance": "cunning",
+        "check": {
+          "stat": "agility",
+          "dc": 13,
+          "advantageClasses": ["shadowblade"],
+          "successNext": "ch3_n5",
+          "failNext": "ch3_n6",
+          "failEffects": { "hpDelta": -5 }
+        }
+      },
+      {
+        "id": "ch3_n4_shield",
+        "label": "Drive straight through the heat behind raised steel and iron resolve.",
+        "stance": "heroic",
+        "check": {
+          "stat": "might",
+          "dc": 13,
+          "advantageClasses": ["paladin", "warden"],
+          "successNext": "ch3_n5",
+          "failNext": "ch3_n6",
+          "failEffects": { "hpDelta": -4, "dreadDelta": 1 }
+        }
+      }
+    ]
+  },
+  {
+    "id": "ch3_n5",
+    "chapterId": "chapter-03",
+    "stage": "confrontation",
+    "title": "The Heart-Crucible",
+    "summary": "Ignaroth the Cinder-Drake strains against blazing Veil-chains over the molten ley-core.",
+    "entry": {
+      "location": "Ashenspire Forge · Heart-Crucible",
+      "time": "Zenith of Flame",
+      "mood": ["epic", "boss"]
+    },
+    "tags": ["confrontation", "boss"],
+    "art": {
+      "sceneKey": "ashenspire_heart",
+      "caption": "A colossal dragon of obsidian and living gold flares its wings above the caldera."
+    },
+    "text": [
+      "Ignaroth towers over the glowing crucible—scales like hammered obsidian threaded with rivers of gold. Blackened Veil-chains bite deep into the drake's collar, driving it half-mad with pain.",
+      "\"LITTLE MORTALS!\" Ignaroth's roar rattles every rivet in the foundry. \"YOU BROKE THE SMITHS' OATH AND CHAINED MY FIRE TO SHADOW!\"",
+      "You spot the glowing lock-pin binding the Veil-chain—and remember Ignaroth's true Concord name."
+    ],
+    "choices": [
+      {
+        "id": "ch3_n5_quench_chains",
+        "label": "Press the Frost-Quench Brand onto the Veil-collar and speak Ignaroth's Concord Oath!",
+        "stance": "arcane",
+        "relicBypass": {
+          "itemId": "relic_quench_rune",
+          "bonusText": "Frost-Quench Brand shatters the Veil-chains for a Golden Path (+100 Mastery)!"
+        },
+        "check": {
+          "stat": "presence",
+          "dc": 16,
+          "advantageClasses": ["paladin", "warden"],
+          "successNext": "ch3_end_legendary",
+          "failNext": "ch3_n6",
+          "failEffects": { "dreadDelta": 1 }
+        },
+        "effects": {
+          "flagsAdd": ["Freed Ignaroth"],
+          "loreAdd": ["lore_drake_oath"]
+        }
+      },
+      {
+        "id": "ch3_n5_slay_drake",
+        "label": "Stand before the wyrm and battle Ignaroth to stabilize the Forge by force!",
+        "stance": "heroic",
+        "combat": {
+          "enemyId": "cinder_drake",
+          "victoryNext": "ch3_end_triumph",
+          "fleeNext": "ch3_end_bittersweet"
+        },
+        "effects": {
+          "flagsAdd": ["Defeated Cinder-Drake"]
+        }
+      },
+      {
+        "id": "ch3_n5_charter_appeal",
+        "label": "\"The Smiths didn't betray you, Ignaroth—the Hollow Crown stole the forge! Look upon the True Charter!\"",
+        "stance": "witty",
+        "relicBypass": {
+          "itemId": "relic_forge_charter",
+          "bonusText": "True Smiths' Charter calms Ignaroth's fury (+100 Mastery)!"
+        },
+        "check": {
+          "stat": "presence",
+          "dc": 15,
+          "advantageClasses": ["paladin", "scholar"],
+          "successNext": "ch3_end_legendary",
+          "failNext": "ch3_n6",
+          "failEffects": { "dreadDelta": 1 }
+        },
+        "effects": {
+          "flagsAdd": ["Renewed Drake Covenant"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ch3_n6",
+    "chapterId": "chapter-03",
+    "stage": "confrontation",
+    "title": "Fury of the Caldera",
+    "summary": "Ignaroth inhales liquid gold fire—only battle or emergency venting remains!",
+    "entry": {
+      "location": "Ashenspire Forge · Burning Crucible",
+      "time": "Eruption",
+      "mood": ["combat", "urgent"]
+    },
+    "tags": ["confrontation", "boss"],
+    "art": {
+      "sceneKey": "ashenspire_heart",
+      "caption": "Walls of golden fire roar across the obsidian platform."
+    },
+    "text": [
+      "The Veil-collar pulses violently, blinding Ignaroth in searing pain. The colossal drake rears back, talons splitting the obsidian deck!",
+      "Stand your ground in battle, or blow the outer slag-gates to quench the crucible and escape the collapse."
+    ],
+    "choices": [
+      {
+        "id": "ch3_n6_duel",
+        "label": "Face Ignaroth the Cinder-Drake in mortal combat!",
+        "stance": "heroic",
+        "combat": {
+          "enemyId": "cinder_drake",
+          "victoryNext": "ch3_end_triumph",
+          "fleeNext": "ch3_end_bittersweet"
+        }
+      },
+      {
+        "id": "ch3_n6_vent",
+        "label": "Blow the outer cooling sluice to smother the crucible and retreat.",
+        "stance": "cunning",
+        "next": "ch3_end_bittersweet",
+        "effects": {
+          "dreadDelta": 1,
+          "flagsAdd": ["Quenched Ashenspire"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ch3_end_legendary",
+    "chapterId": "chapter-03",
+    "stage": "ending",
+    "title": "The Covenant Rekindled",
+    "summary": "Ignaroth casts off the Veil-chains, re-forges Valenmoor's ley-anchor, and bestows a mythic signet.",
+    "tags": ["ending", "legendary"],
+    "art": {
+      "sceneKey": "ashenspire_forge",
+      "caption": "Golden fire climbs smoothly up the spire-channels as the great drake bows its crowned head."
+    },
+    "text": [
+      "The Veil-chains snap with a thunderclap that sends every remaining zealot fleeing for the hills. Ignaroth settles majestically beside the crucible, breathing pure golden flame into the ley-channels.",
+      "With one obsidian claw, the drake nudges a glowing Cinder-Lord's Signet across the stone to your feet. \"When you ascend the Crown of Glass, Oathkeeper, my fire shall hold the sky beneath you.\"",
+      "High above the caldera, the shimmering sky-bridge to the shattered Crown of Glass flares open."
+    ],
+    "choices": [],
+    "ending": {
+      "type": "legendary",
+      "headline": "Oathkeeper of Ashenspire",
+      "epilogue": "Ignaroth and Master-Smith Brannor rekindle the ancient anvil, sending golden star-fire up toward the drifting Crown of Glass.",
+      "rewardGold": 120,
+      "rewardItem": "gear_ember_signet"
+    }
+  },
+  {
+    "id": "ch3_end_triumph",
+    "chapterId": "chapter-03",
+    "stage": "ending",
+    "title": "Master of the Crucible",
+    "summary": "Ignaroth yields, the Veil-chains are shattered, and the sky-way to the Crown of Glass opens.",
+    "tags": ["ending", "triumph"],
+    "art": {
+      "sceneKey": "ashenspire_forge",
+      "caption": "Cool blue twilight settles over smoking obsidian bridges as the ley-core steadies."
+    },
+    "text": [
+      "Your decisive blow shears straight through the Veil-shackle at Ignaroth's throat. Exhausted, the cinder-drake sinks into the cooling embers with a low rumble of grudging respect before gliding out into the mountain peaks.",
+      "Brannor stabilizes the crucible valves and hands you the ascension key—only one reach remains: the Crown of Glass."
+    ],
+    "choices": [],
+    "ending": {
+      "type": "triumph",
+      "headline": "Champion of Ashenspire Forge",
+      "epilogue": "The molten ley-veins steady beneath Ashenspire, illuminating the final sky-road to the Crown of Glass.",
+      "rewardGold": 95
+    }
+  },
+  {
+    "id": "ch3_end_bittersweet",
+    "chapterId": "chapter-03",
+    "stage": "ending",
+    "title": "Cold Iron, Quiet Caldera",
+    "summary": "The cooling sluice stops the zealots' ritual, though Ashenspire's ancient fires dim to ash.",
+    "tags": ["ending", "bittersweet"],
+    "art": {
+      "sceneKey": "ashenspire_forge",
+      "caption": "White steam clouds the silent foundry as distant star-spires flicker overhead."
+    },
+    "text": [
+      "Tons of glacial runoff hiss across the crucible, extinguishing the zealots' siphon in towering clouds of steam. Ignaroth tears free into the stormy sky, roaring over the peaks.",
+      "Ashenspire's anvil grows cold—but the Hollow Crown's grand design is laid bare, and the final spire awaits above the clouds."
+    ],
+    "choices": [],
+    "ending": {
+      "type": "bittersweet",
+      "headline": "Quencher of the Caldera",
+      "epilogue": "Ashenspire falls silent beneath a veil of steam, leaving only the fractured Crown of Glass hanging above Valenmoor.",
+      "rewardGold": 60
+    }
+  }
+]

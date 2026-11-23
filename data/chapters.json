@@ -1,0 +1,64 @@
+{
+  "tutorial": {
+    "chapterId": "tutorial",
+    "order": 0,
+    "title": "The Wayfarer's Oath",
+    "subtitle": "Interactive Prologue · Oakhaven Gatehouse",
+    "region": "Oakhaven Bastion",
+    "difficulty": "Prologue",
+    "sceneKey": "oakhaven_bastion",
+    "dreadThreshold": 6,
+    "summary": "Learn d20 skill checks, flippable Relic Riddles, tactical combat intents, and Veil Dread before venturing into Valenmoor.",
+    "dataUrl": "data/tutorial.json"
+  },
+  "chapters": [
+    {
+      "chapterId": "chapter-01",
+      "order": 1,
+      "title": "The Blight of Silverwood",
+      "subtitle": "Chapter I · The Whispering Canopy",
+      "region": "The Whispering Canopy",
+      "difficulty": "Tier I · Frontier",
+      "sceneKey": "silverwood_gate",
+      "dreadThreshold": 6,
+      "summary": "Blackened thorns choke the ancient silver birches west of Oakhaven. Uncover who poisoned the Elder Heart-Tree before the forest turns against the bastion.",
+      "dataUrl": "data/chapter-01.json"
+    },
+    {
+      "chapterId": "chapter-02",
+      "order": 2,
+      "title": "The Drowned Astrolabe",
+      "subtitle": "Chapter II · The Sunken Star-Vaults",
+      "region": "Lake Vesper",
+      "difficulty": "Tier II · Arcane",
+      "sceneKey": "star_vault",
+      "dreadThreshold": 6,
+      "summary": "Beneath mirror-still Lake Vesper, an ancient celestial observatory spins backward, pulling constellations and memories down into the abyss.",
+      "dataUrl": "data/chapter-02.json"
+    },
+    {
+      "chapterId": "chapter-03",
+      "order": 3,
+      "title": "The Ember Covenant",
+      "subtitle": "Chapter III · Ashenspire Forge",
+      "region": "Ashenspire Caldera",
+      "difficulty": "Tier III · Perilous",
+      "sceneKey": "ashenspire_forge",
+      "dreadThreshold": 6,
+      "summary": "Zealots inside the suspended obsidian foundry are bleeding Valenmoor's molten ley-veins to shatter the bindings of an elder cinder-drake.",
+      "dataUrl": "data/chapter-03.json"
+    },
+    {
+      "chapterId": "chapter-04",
+      "order": 4,
+      "title": "The Shattered Spire",
+      "subtitle": "Chapter IV · The Crown of Glass",
+      "region": "The Aether Veil",
+      "difficulty": "Tier IV · Grand Finale",
+      "sceneKey": "glass_crown",
+      "dreadThreshold": 6,
+      "summary": "Ascend the fractured alabaster citadel hovering at the edge of unmaking. Every oath, relic, and scar converges before the Sovereign Loom.",
+      "dataUrl": "data/chapter-04.json"
+    }
+  ]
+}

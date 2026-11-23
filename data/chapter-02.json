@@ -1,0 +1,441 @@
+[
+  {
+    "id": "ch2_n1",
+    "chapterId": "chapter-02",
+    "stage": "opening",
+    "title": "The Reversing Shore",
+    "summary": "Lake Vesper's waters flow uphill toward a sunken star-domed entrance.",
+    "entry": {
+      "location": "Lake Vesper · Mirror Pier",
+      "time": "Starlit Night",
+      "mood": ["arcane", "mystery"]
+    },
+    "tags": ["opening", "investigation"],
+    "art": {
+      "sceneKey": "star_vault",
+      "caption": "Golden constellations shimmer beneath glass-still waters around an ancient brass causeway.",
+      "relicCard": {
+        "riddleId": "riddle_mirror_water",
+        "artKey": "relic_mirror_card",
+        "caption": "Mirror-Pool Inscription — click to flip & decipher"
+      }
+    },
+    "text": [
+      "Lake Vesper lies flat as polished obsidian, reflecting constellations that do not match the sky above. Along the stone pier, waves pull gently backward into a submerged stairway framed in tarnished brass.",
+      "Ferryman Orin clutches an empty hourglass whose sand floats suspended in midair. \"Ever since hooded scholars rowed out to the Vault last eve,\" he whispers, \"the lake's been drinking starlight—and folk in town are forgetting their own names.\"",
+      "A spiral stair descends into the dry air-dome of the Sunken Star-Vaults, while a narrow aqueduct skirts the outer gallery."
+    ],
+    "onEnter": {
+      "flagsAdd": ["Reached Lake Vesper"]
+    },
+    "choices": [
+      {
+        "id": "ch2_n1_chart_stars",
+        "label": "Compare the lake's inverted constellations to First Concord star charts.",
+        "stance": "arcane",
+        "relicBypass": {
+          "itemId": "relic_tide_mirror",
+          "bonusText": "Mirror-Shard of Vesper aligns the true star-chart (+100 Mastery)"
+        },
+        "check": {
+          "stat": "arcana",
+          "dc": 13,
+          "advantageClasses": ["scholar"],
+          "successNext": "ch2_n2",
+          "failNext": "ch2_n3",
+          "failEffects": { "dreadDelta": 1 }
+        },
+        "effects": {
+          "loreAdd": ["lore_backward_tide"],
+          "flagsAdd": ["Charted Inverted Sky"],
+          "goldDelta": 20
+        }
+      },
+      {
+        "id": "ch2_n1_aqueduct",
+        "label": "Creep along the flooded aqueduct ledge to bypass the main vault wardens.",
+        "stance": "cunning",
+        "check": {
+          "stat": "agility",
+          "dc": 12,
+          "advantageClasses": ["shadowblade"],
+          "successNext": "ch2_n3",
+          "failNext": "ch2_n4",
+          "failEffects": { "hpDelta": -3 }
+        },
+        "effects": {
+          "flagsAdd": ["Aqueduct Infiltration"]
+        }
+      },
+      {
+        "id": "ch2_n1_quip_orin",
+        "label": "\"Floating hourglasses? Finally, a deadline I can actually outrun.\" Borrow Orin's brass sounding-line.",
+        "stance": "witty",
+        "next": "ch2_n2",
+        "effects": {
+          "flagsAdd": ["Orin's Sounding-Line"],
+          "loreAdd": ["lore_drowned_chorus"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ch2_n2",
+    "chapterId": "chapter-02",
+    "stage": "investigation",
+    "title": "The Hall of Pendulums",
+    "summary": "Massive brass rings turn backward beneath vaulted glass ceilings holding back the lake.",
+    "entry": {
+      "location": "Sunken Star-Vaults · Astrolabe Gallery",
+      "time": "Timeless",
+      "mood": ["awe", "investigation"]
+    },
+    "tags": ["investigation", "arcane"],
+    "art": {
+      "sceneKey": "star_vault",
+      "caption": "Gilded celestial rings hum with pale gold light beneath a shimmering ceiling of water.",
+      "relicCard": {
+        "riddleId": "riddle_astrolabe_ring",
+        "artKey": "relic_key_card",
+        "caption": "Locked Meridian Pedestal — click to flip & unlock the Brass Key"
+      }
+    },
+    "text": [
+      "Inside the sunken dome, water presses silently against arched crystal panes forty feet overhead. In the center, the Drowned Astrolabe rotates counter-clockwise, siphoning golden ley-threads down into a dark mirror-well.",
+      "A Gilded Tide-Sentinel—a towering bronze guardian whose visor weeps lake water—marches down the marble steps, mistaking you for another saboteur.",
+      "You can shatter the construct, persuade it with Guild oaths, or slip into the gear-pits below."
+    ],
+    "choices": [
+      {
+        "id": "ch2_n2_fight_sentinel",
+        "label": "Draw steel and dismantle the Gilded Tide-Sentinel!",
+        "stance": "heroic",
+        "combat": {
+          "enemyId": "drowned_sentinel",
+          "victoryNext": "ch2_n5",
+          "fleeNext": "ch2_n4"
+        },
+        "effects": {
+          "loreAdd": ["lore_veil_anchor"],
+          "goldDelta": 20
+        }
+      },
+      {
+        "id": "ch2_n2_command_sentinel",
+        "label": "Invoke the First Concord warden-code to stand the sentinel down.",
+        "stance": "heroic",
+        "check": {
+          "stat": "presence",
+          "dc": 13,
+          "advantageClasses": ["paladin", "scholar"],
+          "successNext": "ch2_n5",
+          "failNext": "ch2_n4",
+          "failEffects": { "dreadDelta": 1 }
+        },
+        "effects": {
+          "flagsAdd": ["Sentinel Stood Down"],
+          "loreAdd": ["lore_veil_anchor"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ch2_n3",
+    "chapterId": "chapter-02",
+    "stage": "investigation",
+    "title": "The Sub-Vault Gearworks",
+    "summary": "Hollow Crown notes reveal they are reversing the Astrolabe to drag down the Crown of Glass.",
+    "entry": {
+      "location": "Sunken Star-Vaults · Clockwork Undercroft",
+      "time": "Timeless",
+      "mood": ["intrigue", "tension"]
+    },
+    "tags": ["investigation", "discovery"],
+    "art": {
+      "sceneKey": "star_vault_core",
+      "caption": "Interlocking brass teeth groan under the weight of reversed ley-currents.",
+      "relicCard": {
+        "riddleId": "riddle_astrolabe_ring",
+        "artKey": "relic_key_card",
+        "caption": "Master Pinions Box — click to flip & claim the Meridian Key"
+      }
+    },
+    "text": [
+      "Beneath the marble floor, colossal bronze gears grind against jammed Veil-crystal wedges. Beside a sputtering lantern lies a sealed scroll: the Hollow Crown's true goal is to reverse Valenmoor's star-anchors so the floating Crown of Glass crashes into the Veil.",
+      "A Gilded Tide-Sentinel drops from the upper grating, halberd leveled at your chest!"
+    ],
+    "choices": [
+      {
+        "id": "ch2_n3_fight",
+        "label": "Clash with the Gilded Tide-Sentinel amid the turning gears!",
+        "stance": "heroic",
+        "combat": {
+          "enemyId": "drowned_sentinel",
+          "victoryNext": "ch2_n5",
+          "fleeNext": "ch2_n4"
+        },
+        "effects": {
+          "loreAdd": ["lore_veil_anchor", "lore_backward_tide"]
+        }
+      },
+      {
+        "id": "ch2_n3_jam_gears",
+        "label": "Pry the Veil-crystal wedge loose and leap through the service hatch!",
+        "stance": "cunning",
+        "check": {
+          "stat": "agility",
+          "dc": 13,
+          "advantageClasses": ["shadowblade"],
+          "successNext": "ch2_n5",
+          "failNext": "ch2_n4",
+          "failEffects": { "hpDelta": -4 }
+        },
+        "effects": {
+          "loreAdd": ["lore_veil_anchor"],
+          "flagsAdd": ["Jammed Veil Wedge"],
+          "dreadDelta": -1
+        }
+      }
+    ]
+  },
+  {
+    "id": "ch2_n4",
+    "chapterId": "chapter-02",
+    "stage": "confrontation",
+    "title": "The Cracked Crystal Span",
+    "summary": "Lake water pours through hairline fractures as the Astrolabe accelerates.",
+    "entry": {
+      "location": "Sunken Star-Vaults · Flooding Span",
+      "time": "Midnight",
+      "mood": ["urgent", "perilous"]
+    },
+    "tags": ["hazard", "confrontation"],
+    "art": {
+      "sceneKey": "star_vault_core",
+      "caption": "Silver cascades rain down from fractured glass arches as brass rings shriek."
+    },
+    "text": [
+      "Freezing water cascades across the marble causeway as the reversed Astrolabe strains the observatory dome. Memories not your own whisper from the ripples—forgotten hymns of fallen scholars.",
+      "Only one archway leads into the Central Orrery where the wraith-keeper anchors the spin."
+    ],
+    "choices": [
+      {
+        "id": "ch2_n4_brace",
+        "label": "Shoulder through the surging current and reach the Orrery plinth.",
+        "stance": "heroic",
+        "check": {
+          "stat": "might",
+          "dc": 13,
+          "advantageClasses": ["paladin"],
+          "successNext": "ch2_n5",
+          "failNext": "ch2_n6",
+          "failEffects": { "hpDelta": -4, "dreadDelta": 1 }
+        }
+      },
+      {
+        "id": "ch2_n4_ward",
+        "label": "Part the freezing tide with a disciplined focus ward.",
+        "stance": "arcane",
+        "check": {
+          "stat": "arcana",
+          "dc": 13,
+          "advantageClasses": ["scholar", "warden"],
+          "successNext": "ch2_n5",
+          "failNext": "ch2_n6",
+          "failEffects": { "dreadDelta": 1 }
+        }
+      }
+    ]
+  },
+  {
+    "id": "ch2_n5",
+    "chapterId": "chapter-02",
+    "stage": "confrontation",
+    "title": "The Central Orrery",
+    "summary": "The Arch-Orrery Wraith hovers inside three spinning brass rings, pulling down the stars.",
+    "entry": {
+      "location": "Sunken Star-Vaults · Sovereign Orrery",
+      "time": "Zenith",
+      "mood": ["climax", "arcane"]
+    },
+    "tags": ["confrontation", "boss"],
+    "art": {
+      "sceneKey": "star_vault_core",
+      "caption": "A spectral astromancer wrapped in orbiting brass rings hovers above a pool of starlight."
+    },
+    "text": [
+      "At the vault's heart floats the Arch-Orrery Wraith—the drowned ghost of an ancient astronomer bound by Hollow Crown runes to wind the sky backward. Rings of glowing brass whirl around its tattered robes.",
+      "\"Time must return to zero!\" the Wraith echoes, its voice vibrating through the stone. \"Only oblivion keeps the stars from falling!\"",
+      "The master lock of the Meridian Spindle lies directly behind it—if you can reach it or break the Wraith's tether."
+    ],
+    "choices": [
+      {
+        "id": "ch2_n5_meridian_key",
+        "label": "Drive the Brass Meridian Key into the master spindle to realign the stars cleanly!",
+        "stance": "arcane",
+        "relicBypass": {
+          "itemId": "relic_celestial_key",
+          "bonusText": "Brass Meridian Key locks the true orbit for a Golden Path (+100 Mastery)!"
+        },
+        "check": {
+          "stat": "arcana",
+          "dc": 16,
+          "advantageClasses": ["scholar"],
+          "successNext": "ch2_end_legendary",
+          "failNext": "ch2_n6",
+          "failEffects": { "dreadDelta": 1 }
+        },
+        "effects": {
+          "flagsAdd": ["Realigned the Astrolabe"],
+          "loreAdd": ["lore_sunken_orrery"]
+        }
+      },
+      {
+        "id": "ch2_n5_fight_wraith",
+        "label": "Strike down the Arch-Orrery Wraith and smash the Hollow Crown tether!",
+        "stance": "heroic",
+        "combat": {
+          "enemyId": "astral_warden",
+          "victoryNext": "ch2_end_triumph",
+          "fleeNext": "ch2_end_bittersweet"
+        },
+        "effects": {
+          "flagsAdd": ["Banished Orrery Wraith"]
+        }
+      },
+      {
+        "id": "ch2_n5_mirror_truth",
+        "label": "\"Look into Lake Vesper's true reflection—the Concord isn't dead while someone still keeps watch!\"",
+        "stance": "witty",
+        "relicBypass": {
+          "itemId": "relic_tide_mirror",
+          "bonusText": "Mirror-Shard of Vesper restores the Wraith's true memory (+100 Mastery)"
+        },
+        "check": {
+          "stat": "presence",
+          "dc": 15,
+          "advantageClasses": ["paladin", "warden"],
+          "successNext": "ch2_end_legendary",
+          "failNext": "ch2_n6",
+          "failEffects": { "dreadDelta": 1 }
+        },
+        "effects": {
+          "flagsAdd": ["Restored Astronomer's Memory"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ch2_n6",
+    "chapterId": "chapter-02",
+    "stage": "confrontation",
+    "title": "Eclipse in the Deep",
+    "summary": "The spinning rings flare bright white as the Wraith unleashes its full astral fury.",
+    "entry": {
+      "location": "Sunken Star-Vaults · Sovereign Orrery",
+      "time": "Eclipse",
+      "mood": ["combat", "urgent"]
+    },
+    "tags": ["confrontation", "boss"],
+    "art": {
+      "sceneKey": "star_vault_core",
+      "caption": "Bolts of pale starlight arc across the flooding floor."
+    },
+    "text": [
+      "The Wraith's brass rings snap into a blazing eclipse. Gravity lurches sideways as shards of starlight rain across the marble plinth.",
+      "Defeat the Arch-Orrery Wraith now, or trip the emergency floodgate to seal the observatory before the Veil rips through."
+    ],
+    "choices": [
+      {
+        "id": "ch2_n6_duel",
+        "label": "Face the Arch-Orrery Wraith head-on!",
+        "stance": "heroic",
+        "combat": {
+          "enemyId": "astral_warden",
+          "victoryNext": "ch2_end_triumph",
+          "fleeNext": "ch2_end_bittersweet"
+        }
+      },
+      {
+        "id": "ch2_n6_seal_gate",
+        "label": "Drop the bronze floodgate to lock the Astrolabe down and swim clear.",
+        "stance": "cunning",
+        "next": "ch2_end_bittersweet",
+        "effects": {
+          "dreadDelta": 1,
+          "flagsAdd": ["Flooded Star-Vault"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ch2_end_legendary",
+    "chapterId": "chapter-02",
+    "stage": "ending",
+    "title": "Constellations Restored",
+    "summary": "The Drowned Astrolabe clicks back into true celestial harmony and lights the path to Ashenspire.",
+    "tags": ["ending", "legendary"],
+    "art": {
+      "sceneKey": "star_vault",
+      "caption": "Warm gold beams rise through Lake Vesper toward the drifting Star-Spires overhead."
+    },
+    "text": [
+      "With a chime like a cathedral bell rung underwater, the brass rings halt and sweep forward again. The Arch-Orrery Wraith bows its spectral head in gratitude, leaving behind a gleaming Vesper Star-Compass before ascending into pure starlight.",
+      "Above the lake, the reflections snap back into alignment—and a golden beam points straight toward the smoking peaks of Ashenspire Forge, where the next ley-anchor burns."
+    ],
+    "choices": [],
+    "ending": {
+      "type": "legendary",
+      "headline": "Keeper of the True Meridian",
+      "epilogue": "Lake Vesper mirrors the heavens once more, and forgotten memories return across Oakhaven by morning.",
+      "rewardGold": 100,
+      "rewardItem": "gear_vesper_compass"
+    }
+  },
+  {
+    "id": "ch2_end_triumph",
+    "chapterId": "chapter-02",
+    "stage": "ending",
+    "title": "Silence Beneath the Mirror",
+    "summary": "With the Wraith banished, the backward tide ceases and the Spire-Anchor holds.",
+    "tags": ["ending", "triumph"],
+    "art": {
+      "sceneKey": "star_vault",
+      "caption": "Still waters settle over the quiet brass observatory as dawn warms the cliffs."
+    },
+    "text": [
+      "The Arch-Orrery Wraith fractures into drifting sparks of gold dust. Without its guiding curse, the Astrolabe slows to a gentle, steady rhythm and the ceiling cracks seal themselves with warm amber glass.",
+      "You emerge onto Mirror Pier as Orin's hourglass resumes pouring sand—and carrying coordinates pointing straight to Ashenspire Forge."
+    ],
+    "choices": [],
+    "ending": {
+      "type": "triumph",
+      "headline": "Vanquisher of the Drowned Wraith",
+      "epilogue": "The backward tide ends at sunrise, steadying Valenmoor's eastern Star-Spires for the trials ahead.",
+      "rewardGold": 80
+    }
+  },
+  {
+    "id": "ch2_end_bittersweet",
+    "chapterId": "chapter-02",
+    "stage": "ending",
+    "title": "Sealed Under Deep Water",
+    "summary": "The floodgate halts the Veil siphon, though the ancient observatory is lost to the depths.",
+    "tags": ["ending", "bittersweet"],
+    "art": {
+      "sceneKey": "star_vault",
+      "caption": "Dark ripples close over the submerged stairway as faint amber light fades beneath the lake."
+    },
+    "text": [
+      "The bronze floodgates slam shut behind you, entombing the Vault beneath tons of still lake water. The backward pull ceases, saving Oakhaven's memories—yet centuries of celestial wisdom sink out of reach.",
+      "Still, the Hollow Crown's sabotage map is in your satchel: their ember-zealots are already marching on Ashenspire Forge."
+    ],
+    "choices": [],
+    "ending": {
+      "type": "bittersweet",
+      "headline": "Survivor of Lake Vesper",
+      "epilogue": "Lake Vesper grows still again, guarding its flooded secrets while distant smoke rises over Ashenspire.",
+      "rewardGold": 50
+    }
+  }
+]

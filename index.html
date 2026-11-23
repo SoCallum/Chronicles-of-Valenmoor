@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chronicles of Valenmoor | High-Fantasy Roguelike Narrative RPG</title>
+    <meta
+      name="description"
+      content="Embark on Chronicles of Valenmoor, a free high-fantasy roguelike narrative RPG. Forge your Wayfarer Charter, decipher interactive rune riddles, fight tactical d20 battles, upgrade gear at Oakhaven Bastion, and claim your place in the Hall of Legends."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#16120e" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "Chronicles of Valenmoor",
+        "description": "A high-fantasy roguelike narrative RPG combining branching chronicles, interactive rune riddles, tactical d20 combat, and a Hall of Legends leaderboard.",
+        "applicationCategory": "Game",
+        "gamePlatform": "Web browser",
+        "genre": ["High Fantasy", "RPG", "Roguelike", "Interactive Fiction"],
+        "playMode": "SinglePlayer",
+        "isAccessibleForFree": true,
+        "inLanguage": "en-US"
+      }
+    </script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="site-header">
+        <div class="brand">
+          <span class="brand__sigil" aria-hidden="true">✦</span>
+          <div>
+            <p class="brand__title">Chronicles of Valenmoor</p>
+            <p class="brand__sub">The Sundered Reach</p>
+          </div>
+        </div>
+
+        <div class="header-profile" id="header-profile" hidden>
+          <span class="header-profile__avatar" id="header-avatar"></span>
+          <div>
+            <p class="header-profile__name" id="header-hero-name">—</p>
+            <p class="header-profile__order" id="header-hero-order">—</p>
+          </div>
+        </div>
+
+        <nav class="site-nav" aria-label="Primary actions">
+          <button
+            type="button"
+            class="icon-btn"
+            id="sound-toggle-btn"
+            aria-label="Toggle sound chimes"
+            aria-pressed="true"
+          ></button>
+          <button type="button" class="btn btn--ghost" id="nav-prologue-btn">Prologue</button>
+          <button type="button" class="btn btn--primary" id="nav-start-btn">New Chronicle</button>
+        </nav>
+      </header>
+
+      <main>
+        <!-- HERO LANDING -->
+        <section class="hero" id="hero-section">
+          <div class="hero__visual">
+            <div class="hero__frame" id="hero-art-frame"></div>
+            <p class="hero__caption">Oakhaven Bastion &amp; the Drifting Star-Spires of Valenmoor</p>
+          </div>
+
+          <div class="hero__copy">
+            <p class="kicker">High-Fantasy Roguelike Narrative RPG</p>
+            <h1>Mend the Star-Spires Before the Veil Consumes the Reach.</h1>
+            <p class="hero__lead">
+              Swear your Wayfarer's Charter across four branching high-fantasy chapters. Flip illuminated
+              rune cards to uncover Satchel Relics, read enemy telegraphs in tactical d20 battles, trade
+              at Master Elric's Curio Forge, and carve your title into the Hall of Legends.
+            </p>
+
+            <div class="resume-banner" id="resume-banner" hidden>
+              <div>
+                <p class="resume-banner__kicker">Unfinished Chronicle Found</p>
+                <p class="resume-banner__text" id="resume-summary"></p>
+              </div>
+              <div class="resume-banner__actions">
+                <button type="button" class="btn btn--primary btn--sm" id="resume-run-btn">Resume</button>
+                <button type="button" class="btn btn--ghost btn--sm" id="discard-save-btn">Discard</button>
+              </div>
+            </div>
+
+            <div class="hero__cta">
+              <button type="button" class="btn btn--primary btn--lg" id="hero-start-btn">
+                Begin New Chronicle
+              </button>
+              <button type="button" class="btn btn--secondary btn--lg" id="hero-prologue-btn">
+                Play 2-Minute Prologue
+              </button>
+            </div>
+
+            <div class="hero__facts">
+              <span>4 Branching Chapters</span>
+              <span>4 Playable Orders</span>
+              <span>Tactical d20 Combat</span>
+              <span>Interactive Rune Riddles</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ACTIVE PLAY WORKSPACE -->
+        <section class="play-workspace" id="play-section" hidden>
+          <div class="play-bar">
+            <div>
+              <p class="play-bar__kicker" id="active-chapter-subtitle">—</p>
+              <h2 class="play-bar__title" id="active-chapter-title">—</h2>
+            </div>
+            <div class="play-bar__actions">
+              <button type="button" class="btn btn--ghost btn--sm" id="return-board-btn">
+                Save &amp; Return to Hall
+              </button>
+            </div>
+          </div>
+
+          <div class="play-grid">
+            <div class="play-main" id="play-stage"></div>
+            <aside class="play-sidebar" id="play-sidebar" aria-label="Wayfarer Ledger"></aside>
+          </div>
+        </section>
+
+        <!-- HALL OF LEGENDS LEADERBOARD -->
+        <section class="board-section" id="board-section">
+          <div class="section-head">
+            <div>
+              <p class="kicker">Oakhaven Great Ledger</p>
+              <h2>Hall of Legends</h2>
+              <p class="section-sub">
+                Every sealed chronicle is scored deterministically and archived. Click any champion to inspect their Charter.
+              </p>
+            </div>
+            <div class="tab-switch" role="tablist" aria-label="Leaderboard view">
+              <button type="button" class="tab-btn is-active" data-board-mode="hall">Hall of Legends</button>
+              <button type="button" class="tab-btn" data-board-mode="recent">Recent Chronicles</button>
+            </div>
+          </div>
+
+          <div class="board-card">
+            <div class="filter-bar" role="tablist" aria-label="Filter by Legend Style">
+              <button type="button" class="filter-btn is-active" data-style-filter="all">All Legends</button>
+              <button type="button" class="filter-btn" data-style-filter="mythic">Mythic Sovereign</button>
+              <button type="button" class="filter-btn" data-style-filter="heroic">Ironclad Vanguard</button>
+              <button type="button" class="filter-btn" data-style-filter="arcane">Arcane Savant</button>
+              <button type="button" class="filter-btn" data-style-filter="witty">Silver-Tongued Bard</button>
+              <button type="button" class="filter-btn" data-style-filter="cunning">Ghost of the Reach</button>
+            </div>
+
+            <div class="table-wrap">
+              <table class="board-table">
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Wayfarer</th>
+                    <th>Legend Title</th>
+                    <th>Reaches</th>
+                    <th>Score</th>
+                    <th>Outcome</th>
+                    <th>Recorded</th>
+                  </tr>
+                </thead>
+                <tbody id="board-body"></tbody>
+              </table>
+            </div>
+
+            <div class="board-pager">
+              <button type="button" class="btn btn--ghost btn--sm" id="board-prev">Previous</button>
+              <span id="board-page-status">Page 1 of 1</span>
+              <button type="button" class="btn btn--ghost btn--sm" id="board-next">Next</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- HOW IT WORKS / REALM PILLARS -->
+        <section class="pillars-section" id="features-section">
+          <div class="section-head">
+            <div>
+              <p class="kicker">The Wayfarer's Craft</p>
+              <h2>Built for Tabletop Depth &amp; Replayable Mystery</h2>
+            </div>
+          </div>
+          <div class="pillars-grid">
+            <article class="pillar-card">
+              <h3>Illuminated Relic Riddles</h3>
+              <p>
+                Flip glowing rune cards right inside scenes to decipher ancient inscriptions, claim
+                Satchel Relics, unlock Golden Paths, and expose hidden boss weaknesses.
+              </p>
+            </article>
+            <article class="pillar-card">
+              <h3>Telegraphed Tactical Combat</h3>
+              <p>
+                Read every foe's next intent before acting—raise a Ward against heavy cleaves, Stun
+                with Briar Grasp, pierce armor with Astral Lance, or smite away Veil Dread.
+              </p>
+            </article>
+            <article class="pillar-card">
+              <h3>Oakhaven Sanctuary Loop</h3>
+              <p>
+                Between expeditions, mend Vitality by the Hearth, purge creeping Veil Dread, upgrade
+                gear at Master Elric's Curio Forge, or retire early to bank your Legend Score.
+              </p>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>Chronicles of Valenmoor · Illuminated High-Fantasy Roguelike RPG</p>
+        <p class="footer-note">Keyboard tip: press keys 1–4 during narrative scenes to pick a path swiftly.</p>
+      </footer>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast-banner" id="toast-banner" role="status" aria-live="polite" hidden></div>
+
+    <!-- CHARACTER CHARTER MODAL -->
+    <div class="modal-backdrop" id="character-modal" hidden>
+      <div class="modal-dialog modal-dialog--wide" role="dialog" aria-modal="true" aria-labelledby="charter-modal-title">
+        <div class="modal-header">
+          <div>
+            <p class="kicker">Oakhaven Wayfarer's Guild</p>
+            <h2 id="charter-modal-title">Forge Your Illuminated Charter</h2>
+          </div>
+          <button type="button" class="icon-btn" id="charter-close-btn" aria-label="Close character creator">✕</button>
+        </div>
+
+        <div class="charter-layout">
+          <div class="charter-preview-col">
+            <div class="charter-card" id="charter-card">
+              <p class="charter-card__realm">Sundered Reach of Valenmoor</p>
+              <div class="charter-card__portrait" id="charter-portrait"></div>
+              <p class="charter-card__label">Sworn Wayfarer</p>
+              <p class="charter-card__name" id="charter-alias-preview">—</p>
+              <p class="charter-card__order" id="charter-order-preview">—</p>
+              <p class="charter-card__perk" id="charter-perk-preview">—</p>
+              <div class="charter-card__seal">
+                <span>Seal: Oakhaven Bastion</span>
+                <span>Concord Charter</span>
+              </div>
+            </div>
+
+            <div class="creator-block">
+              <label class="creator-label" for="hero-name-input">Wayfarer Name</label>
+              <div class="name-input-row">
+                <input
+                  type="text"
+                  id="hero-name-input"
+                  class="text-input"
+                  maxlength="32"
+                  placeholder="Enter hero name..."
+                />
+                <button type="button" class="btn btn--secondary btn--sm" id="roll-name-btn">Roll Name</button>
+              </div>
+            </div>
+
+            <div class="creator-block">
+              <p class="creator-label">Illuminated Portrait</p>
+              <div class="portrait-grid" id="portrait-grid"></div>
+            </div>
+          </div>
+
+          <div class="charter-options-col">
+            <div class="creator-block">
+              <p class="creator-label">Choose Your Order</p>
+              <div class="order-grid" id="order-grid"></div>
+            </div>
+
+            <div class="creator-block">
+              <div class="creator-label-row">
+                <p class="creator-label">Attributes (Adjust or Roll 4d6 Drop Lowest)</p>
+                <div class="stat-tools">
+                  <button type="button" class="btn btn--secondary btn--sm" id="roll-stats-btn">Roll 4d6</button>
+                  <button type="button" class="btn btn--ghost btn--sm" id="preset-stats-btn">Order Preset</button>
+                </div>
+              </div>
+              <div class="creator-stats-grid" id="creator-stats-grid"></div>
+            </div>
+
+            <div class="modal-actions">
+              <button type="button" class="btn btn--primary btn--lg" id="charter-confirm-btn">
+                Seal Charter &amp; Embark
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHRONICLE RECAP MODAL -->
+    <div class="modal-backdrop" id="recap-modal" hidden>
+      <div class="modal-dialog modal-dialog--medium" role="dialog" aria-modal="true" aria-labelledby="recap-title">
+        <div class="modal-header">
+          <h2 id="recap-title">Chapter Recap</h2>
+          <button type="button" class="icon-btn" id="recap-close-btn" aria-label="Close recap">✕</button>
+        </div>
+
+        <div class="recap-stats">
+          <div class="recap-stat">
+            <span>Outcome</span>
+            <strong id="recap-ending">—</strong>
+          </div>
+          <div class="recap-stat">
+            <span>Chronicle Score</span>
+            <strong id="recap-score">0 pts</strong>
+          </div>
+          <div class="recap-stat">
+            <span>Legend Title</span>
+            <strong id="recap-legend">—</strong>
+          </div>
+        </div>
+
+        <p class="recap-reward-banner" id="recap-reward-banner" hidden></p>
+
+        <div class="recap-columns">
+          <div class="recap-box">
+            <h3>Score Breakdown</h3>
+            <ul class="breakdown-list" id="recap-breakdown"></ul>
+          </div>
+          <div class="recap-box">
+            <h3>Lore Uncovered</h3>
+            <ul class="lore-recap-list" id="recap-lore"></ul>
+          </div>
+        </div>
+
+        <blockquote class="epilogue-scroll" id="recap-epilogue"></blockquote>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn--primary" id="recap-primary-btn">Return to Oakhaven Bastion</button>
+          <button type="button" class="btn btn--ghost" id="recap-secondary-btn">Seal Run Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- LEADERBOARD CHARTER INSPECT MODAL -->
+    <div class="modal-backdrop" id="inspect-modal" hidden>
+      <div class="modal-dialog modal-dialog--small" role="dialog" aria-modal="true" aria-labelledby="inspect-name">
+        <div class="modal-header">
+          <p class="kicker">Archived Wayfarer Charter</p>
+          <button type="button" class="icon-btn" id="inspect-close-btn" aria-label="Close charter">✕</button>
+        </div>
+        <div class="inspect-body">
+          <div class="inspect-portrait" id="inspect-portrait"></div>
+          <h3 id="inspect-name">—</h3>
+          <p class="inspect-order" id="inspect-order">—</p>
+          <p class="inspect-title" id="inspect-title">—</p>
+          <div class="inspect-meta">
+            <span id="inspect-score">0 pts</span>
+            <span id="inspect-chapters">0 / 4 Reaches</span>
+            <span id="inspect-ending">—</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>

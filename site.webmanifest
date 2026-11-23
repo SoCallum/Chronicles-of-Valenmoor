@@ -1,0 +1,9 @@
+{
+  "name": "Chronicles of Valenmoor",
+  "short_name": "Valenmoor",
+  "description": "High-fantasy roguelike narrative RPG with branching chronicles, rune riddles, tactical d20 combat, and a Hall of Legends.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#14110e",
+  "theme_color": "#c99b49"
+}
